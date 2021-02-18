@@ -1,0 +1,194 @@
+import React,{useState} from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground} from 'react-native';
+import Icons from 'react-native-vector-icons/Ionicons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+const confScreen = () =>{
+    const [time,setTime]= useState();
+    const [minTime,setMintime]= useState();
+    const [maxTime, setMaxtime] =useState();
+
+    return(
+        <View style={{backgroundColor:"#f5fffa"}}>
+       
+        
+            <Text style={styles.logo}>LOGO</Text>
+
+            <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={{marginBottom:7,flexDirection:'row'}}>
+                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:10,marginLeft:10}}></Icons>
+            <Text style={styles.rest}>Restaurant</Text>
+            <Text style={styles.back} onPress={()=>navigation.navigate("tabScreen")}>Back</Text>
+            </View>
+            <ImageBackground source={require('../assets/banner1.jpg')} style={styles.Image2} >
+                   
+            <View style={styles.view3}>
+            <Text style={{marginLeft:45,marginTop:30,color:"#696969"}}>Preparation Time</Text>
+            <TextInput style={styles.input} value={time} onChangeText={(text)=>setTime(text)} keyboardType="number-pad" />
+
+            <Text style={{marginLeft:40,marginTop:10,color:"#696969"}}>Minimum Delivery Time</Text>
+            <TextInput style={styles.input} value={minTime} onChangeText={(text)=>setMintime(text)} keyboardType="number-pad" /
+            >
+            <Text  style={{marginLeft:40,marginTop:10,color:"#696969"}}>Maximum Delivery Time</Text>
+            <TextInput style={styles.input} value={maxTime} onChangeText={(text)=>setMaxtime(text)} keyboardType="number-pad"/>
+
+            <Text  style={{marginLeft:40,marginTop:10,marginBottom:10,color:"#696969"}}>Set Time Slot</Text>
+
+            <View style={styles.view4}>
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:15,marginTop:10,marginRight:20,color:"#696969"}}>Mon</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:10,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:15,marginTop:5,marginRight:25,color:"#696969"}}>Tue</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:15,marginTop:5,marginRight:20,color:"#696969"}}>Wed</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:15,marginTop:5,marginRight:23,color:"#696969"}}>Thu</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:17,marginTop:5,marginRight:30,color:"#696969"}}>Fri</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:17,marginTop:5,marginRight:24,color:"#696969"}}>Sat</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginLeft:17,marginTop:5,marginRight:21,color:"#696969"}}>Sun</Text>
+            <TextInput style={styles.input2}></TextInput>
+            <Text style={{marginRight:20,marginTop:5,marginLeft:25,color:"#696969"}}>to</Text>
+            <TextInput style={styles.input2}></TextInput>
+            </View>
+            </View>
+            <TouchableOpacity   onPress={()=>navigation.navigate("regScreen")}>
+            <Text style={{backgroundColor:"#FDC913", marginLeft:100,fontSize:15,fontWeight:'bold',
+            color:"white",height:"38%",paddingTop:7,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40}}>Save</Text>
+            </TouchableOpacity>
+            </View>
+            </ImageBackground>
+          
+            </ScrollView>
+            </View>
+    )
+}
+
+export default confScreen;
+
+const styles = StyleSheet.create({
+    root: {
+      flex: 1,
+      flexDirection:'row'
+    },
+    logo:{
+        
+        paddingLeft:25,
+        paddingTop:35,
+        fontSize:30,
+        height: 100,
+        width: "100%",
+        backgroundColor: "#f5fffa",
+        //borderRadius: 5,
+        elevation: 20,
+        color:"#696969",
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+    },
+    rest:{
+        fontSize:25,
+        marginLeft:75,
+        marginTop:30,
+        marginBottom:10,
+        color:"#696969"
+    },
+    back:{
+        fontSize:15,
+        marginTop:25,
+        marginLeft:65,
+        color:"#696969"
+    },
+    input:{
+        borderColor:"#696969",
+        borderWidth:1,
+       marginTop:10,
+       marginLeft:45,
+       width:"70%",
+       borderRadius:2,
+       
+   
+    },
+    view3:{
+        marginBottom:120,
+        paddingLeft:0,
+        paddingTop:0,
+        marginLeft:18,
+        height: 620,
+        width: "90%",
+        backgroundColor: "white",
+        borderRadius: 15,
+        elevation: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        marginTop:90
+    },
+    input2:{
+        borderColor:"#696969",
+        borderWidth:1,
+       marginTop:10,
+       marginLeft:0,
+       width:"20%",
+       height:"40%",
+       borderRadius:2,
+      
+   
+    },
+    view4:{
+        marginBottom:20,
+        paddingLeft:0,
+        paddingTop:0,
+        marginLeft:36,
+        height: 280,
+        width: "78%",
+        backgroundColor: "white",
+        borderRadius: 5,
+        elevation: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+    },
+    Image2:{
+        
+        width:"100%",
+        height:"50%",
+        resizeMode:"contain"
+    }
+})
