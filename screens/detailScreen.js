@@ -120,13 +120,13 @@ const detailScreen = ({navigation}) =>{
 
             
             <View style={styles.view4}>
-            <Text style={{marginLeft:20,marginTop:10,color:"#696969"}}>Enter Delivery Radius in km</Text>
+            <Text style={{marginLeft:45,marginTop:10,color:"#696969"}}>Enter Delivery Radius in km</Text>
             <TextInput style={styles.input} value={deliveryRadius} onChangeText={(text)=>setDeliveryRadius(text)} keyboardType="number-pad" />
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:5,marginLeft:20,color:"#696969", marginRight:35}}>View on Map</Text>
+            <Text style={{marginTop:5,marginLeft:45,color:"#696969", marginRight:35}}>View on Map</Text>
             
-            <Image source={require('../assets/map.png')} style={{width:"25%",height:"100%",marginTop:10}}></Image>
+            <Image source={require('../assets/map.png')} style={{width:"15%",height:"100%",marginTop:10}}></Image>
            
             </View>
             </View>
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         paddingLeft:0,
         paddingTop:0,
-        marginLeft:30,
+        marginLeft:32,
         height: 110,
         width: "80%",
         backgroundColor: "#f5fffa",
@@ -217,9 +217,10 @@ const styles = StyleSheet.create({
         borderColor:"#696969",
         borderWidth:1,
        marginTop:10,
-       marginLeft:75,
+       marginLeft:85,
        width:"35%",
-       color:"#696969"
+       
+       
    
     },
     Image2:{
