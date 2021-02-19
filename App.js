@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View ,Text} from 'react-native';
+import { useFonts } from 'expo-font';
 
 import restScreen from './screens/restScreen';
 import regScreen from './screens/regScreen';
@@ -11,12 +12,22 @@ import tabScreen from './screens/tabScreen';
 import foodScreen from './screens/foodScreen';
 import detailScreen from './screens/detailScreen';
 import confScreen from './screens/confScreen';
-
+import EditScreen from './screens/EditScreen';
 
 const Stack = createStackNavigator();
-const App = () => {
+export default function App() {
+  const [loaded] = useFonts({
+    OpenSansRegular: require('./assets/fonts/OpenSans-Regular.ttf'),
+    OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'),
+    OpenSansSemiBold: require('./assets/fonts/OpenSans-SemiBold.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
+   
     <NavigationContainer>
       
       <Stack.Navigator>
@@ -69,13 +80,20 @@ const App = () => {
             { headerShown: false }
           }
         />
+      
+      <Stack.Screen name="EditScreen"
+          component={EditScreen}
+          options={
+            { headerShown: false }
+          }
+        />
 
 </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default App;
+
 
 const styles = StyleSheet.create({
   container: {

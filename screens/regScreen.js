@@ -1,76 +1,121 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import {Button} from 'react-native-paper';
+import { StyleSheet, Text, View, ScrollView, TextInput,CheckBox} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';;
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign'
+import DropDownPicker from 'react-native-dropdown-picker';
+
 
 const regScreen = ({navigation}) =>{
-
+    var items
     const [name,setName]= useState();
     const[email,setEmail] = useState();
     const [phone,setPhone]= useState();
     const [address, setAddress] = useState();
-    const[delivery,setDelivery] = useState();
+ 
     const[licence,setLicence]= useState();
+    const[item,setItem] = useState('Delivery');
+    const [asianSelect,setAsianSelect] =  useState(false);
+    const [italianselect,setItalianSelect] = useState(false);
+    const [northselect,setNorthSelect] = useState(false);     
+    
     return(
         
-        <View style={{backgroundColor:"#f5fffa",paddingBottom:60}}>
-            <Text style={styles.logo}>LOGO</Text>
+        <View style={{backgroundColor:"#f5fffa"}}>
+            
 
-            <View style={{paddingBottom:140}}>
+            <View >
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{flexDirection:"row"}}>
             <Text style={styles.res}>Restaurant</Text>
-            <Text style={{marginTop:25,color:"#696969",}} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
+            <Text style={{marginTop:55,color:"#696969", fontFamily: 'OpenSansRegular'}} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
             </View>
 
-            <Text style={{marginLeft:125, fontSize:20,color:"#696969",}}>Registration</Text>
+            <Text style={{marginLeft:125, fontSize:20,color:"#696969", fontFamily: 'OpenSansBold'}}>Registration</Text>
 
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Restaurant Name</Text>
-            <TextInput style={styles.line} value={name} onChangeText={(text)=>setName(text)} placeholder="" />
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Name</Text>
+            <TextInput style={styles.line} value={name} onChangeText={(text)=>setName(text)}  />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}} >Restaurant Email</Text>
-            <TextInput style={styles.line} value={email}  onChangeText={(text)=>setEmail(text)} placeholder="" />
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}} >Restaurant Email</Text>
+            <TextInput style={styles.line} value={email}  onChangeText={(text)=>setEmail(text)} />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Restaurant Phone</Text>
-            <TextInput style={styles.line} value={phone} onChangeText={(text)=>setPhone(text)} keyboardType="number-pad" placeholder="" />
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Phone</Text>
+            <TextInput style={styles.line} value={phone} onChangeText={(text)=>setPhone(text)} keyboardType="number-pad" />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Restaurant Address</Text>
-            <TextInput style={styles.line} value={address} onChangeText={(text)=>setAddress(text)} placeholder="" />
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Address</Text>
+            <TextInput style={styles.line} value={address} onChangeText={(text)=>setAddress(text)}  />
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Delivery Mode</Text>
-            <Icon style={{marginLeft:180,marginTop:20,color:"#696969",}} name="caretdown" size={17} color="grey" />
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Delivery Mode</Text>
+
+            
             </View>
-            <TextInput style={styles.line} value={delivery} onChangeText={(text)=>setDelivery(text)} placeholder="" />
+            <DropDownPicker style={{marginRight:25,marginLeft:45}}
+                    items={[
+                        { label: 'Delivery', value: 'Delivery' },
+                        { label: 'Self pickup', value: 'Self pickup' },
+                        { label: 'Both', value: 'Both' },
+                        
+                    ]}
+                    defaultValue={items}
+                    containerStyle={{ height: 50 }}
+                    placeholder="Select a mode"
+                    style={styles.drop}
+                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
+                    itemStyle={{
+                        justifyContent: 'flex-start'
+                    }}
+                    dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    onChangeItem={(item)=>setItem(item.value)}
+                    
+                />
+           
            
         
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Licence Number</Text>
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Licence Number</Text>
             <TextInput style={styles.line} value={licence}  onChangeText={(text)=>setLicence(text)} keyboardType="number-pad" placeholder="" />
             
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969",}}>Category</Text>
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Category</Text>
+
+          
+        
 
             <View style={styles.categ}>
-            <View style={{marginBottom:10,flexDirection:'row'}}>
-            <Text style={{marginRight:130,color:"#696969",}}>Asian</Text>
-            <Icons name="ios-tablet-landscape-outline" style={{color:"black"}}></Icons>
-            </View>
-            <View style={{marginBottom:10,flexDirection:'row'}}>
-            <Text style={{marginRight:127,color:"#696969",}}>Italian</Text>
-            <Icons name="ios-tablet-landscape-outline" style={{color:"black",}}></Icons>
-            </View>
-            <View style={{flexDirection:'row'}}>
-            <Text style={{marginRight:88,color:"#696969",}}>North Indian</Text>
-            <Icons name="ios-tablet-landscape-outline" style={{color:"black"}}></Icons>
-            </View>
-            </View>
+                <View style={{flexDirection:'row', }}>
+            <Text style={{marginRight:134,fontFamily:"OpenSansRegular"}}>Asian</Text>
+                    <CheckBox value={asianSelect}
+                    onValueChange={setAsianSelect}
+                    style={{marginLeft:10}}>
+
+                    </CheckBox>
+                    </View>
+
+
+                    <View style={{flexDirection:'row', }}>
+                    <Text style={{marginRight:129,fontFamily:"OpenSansRegular"}}>Italian</Text>
+                    <CheckBox value={italianselect}
+                    onValueChange={setItalianSelect}
+                    style={{marginLeft:10}}>
+
+                    </CheckBox></View>
+                <View style={{flexDirection:'row', }}>
+
+                    <Text style={{marginRight:86,fontFamily:"OpenSansRegular"}}>North Indian</Text>
+
+
+                    <CheckBox value={northselect}
+                    onValueChange={setNorthSelect}
+                    style={{marginLeft:10}}>
+
+                    </CheckBox></View>
+
+                </View>
 
             
- <TouchableOpacity style={{width:"100%",}} onPress={()=>navigation.navigate("restScreen")}>
-            <Text style={{backgroundColor:"#FDC913", marginLeft:60,fontSize:15,fontWeight:"bold",marginBottom:40,
-            color:"white",height:"30%",paddingTop:10,paddingLeft:100,borderRadius:20,width:"70%",paddingRight:40}}>Submit</Text>
+ <TouchableOpacity style={{width:"100%",}} onPress={()=>navigation.navigate("restScreen")} >
+            <Text style={{backgroundColor:"#FDC913", marginLeft:45,fontSize:15,fontWeight:"bold",marginBottom:40,
+            color:"white",height:"30%",paddingTop:10,paddingLeft:110,borderRadius:20,width:"75%",paddingRight:40,fontFamily:"OpenSansBold"}}>Submit</Text>
             </TouchableOpacity>
            
             </ScrollView>
@@ -87,37 +132,23 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection:'row'
     },
-    logo:{
-        
-        paddingLeft:25,
-        paddingTop:35,
-        fontSize:30,
-        height: 100,
-        width: "100%",
-        backgroundColor: "#f5fffa",
-        //borderRadius: 5,
-        elevation: 20,
-        
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        color:"#696969",
-    },
+ 
     res:{
         marginLeft:130,
-        marginRight:80,
+        marginRight:70,
         fontSize:20,
-        marginTop:20,
+        marginTop:60,
         color:"#696969",
+        fontFamily: 'OpenSansBold'
+        
 
     },
     categ:{
         paddingLeft:25,
         paddingTop:15,
         marginBottom:20,
-        height: 110,
-        width: "65%",
+        height: 130,
+        width: "70%",
         backgroundColor: "white",
         borderRadius: 5,
         elevation: 20,
@@ -125,7 +156,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.5,
         shadowRadius: 5,
-        marginLeft:65,
+        marginLeft:55,
         marginTop:20
     },
     line: {
@@ -139,4 +170,11 @@ const styles = StyleSheet.create({
         marginRight:35
 
     },
+    drop:{
+        backgroundColor: '#fafafa',
+        marginLeft:32,
+        marginTop:15,
+        marginRight:32
+        //fontFamily: 'OpenSansRegular' 
+    }
 })

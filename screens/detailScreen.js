@@ -23,10 +23,10 @@ const detailScreen = ({navigation}) =>{
         
         <View >
 
-             <Text style={styles.logo}>LOGO</Text>
+         
              <ScrollView showsVerticalScrollIndicator={false}>
              <View style={{marginBottom:7,flexDirection:'row'}}>
-                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:10,marginLeft:10}}></Icons>
+                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:50,marginLeft:10}}></Icons>
             <Text style={styles.rest}>Restaurant</Text>
             <Text style={styles.back} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
             </View>
@@ -35,76 +35,76 @@ const detailScreen = ({navigation}) =>{
                   
             <View style={styles.view3}>
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:20,marginLeft:20,marginBottom:10,marginRight:115,color:"#696969"}}>Name</Text>
-            <Text style={{marginTop:20,color:"#696969"}}>:</Text>
+            <Text style={{marginTop:20,marginLeft:20,marginBottom:10,marginRight:115,color:"#696969",fontFamily:"OpenSansRegular"}}>Name</Text>
+            <Text style={{marginTop:20,color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginTop:10,marginLeft:5}} value={name} onChangeText={(text)=>setName(text)} />
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:100,color:"#696969"}}>Address</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:100,color:"#696969",fontFamily:"OpenSansRegular"}}>Address</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={address} onChangeText={(text)=>setAddress(text)} />
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:112,color:"#696969"}}>Phone</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:111,color:"#696969",fontFamily:"OpenSansRegular"}}>Phone</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={phone} onChangeText={(text)=>setPhone(text)} keyboardType="number-pad"/>
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:116,color:"#696969"}}>Email</Text>
-            <Text style={{color:"#696969"}}>:</Text>
-            <TextInput style={{marginLeft:5}} value={email}  onChangeText={(text)=>setEmail(text)}/>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:117,color:"#696969",fontFamily:"OpenSansRegular"}}>Email</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
+            <TextInput style={{marginLeft:5}} value={email}  onChangeText={(text)=>setEmail(text)} keyboardType="email-address"/>
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:20,color:"#696969"}}>Basic delivery charge</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:16,color:"#696969",fontFamily:"OpenSansRegular"}}>Basic delivery charge</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={basicCharge} onChangeText={(text)=>setBasicCharge(text)} keyboardType="number-pad"/>
             </View>
             
             
                 <View style={{flexDirection:'column'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:57,color:"#696969"}}>Delivery charge</Text></View>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:57,color:"#696969",fontFamily:"OpenSansRegular"}}>Delivery charge</Text></View>
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:98,color:"#696969"}}>(per km)</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:98,color:"#696969",fontFamily:"OpenSansRegular"}}>(per km)</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={deliveryCharge} onChangeText={(text)=>setDeliveryCharge(text)} keyboardType="number-pad"/>
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:63,color:"#696969"}}>Delivery Mode</Text>
-            <Text style={{color:"#696969"}}>:</Text>
-            <TextInput style={{marginLeft:5}} value={deliveryMode} onChangeText={(text)=>setDeliveryMode(text)} keyboardType="number-pad"></TextInput>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:58,color:"#696969",fontFamily:"OpenSansRegular"}}>Delivery Mode</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
+            <TextInput style={{marginLeft:5}} value={deliveryMode} onChangeText={(text)=>setDeliveryMode(text)}></TextInput>
             </View>
 
             
             <View style={{flexDirection:'column'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:62,color:"#696969"}}>Admin Delivery</Text></View>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:62,color:"#696969",fontFamily:"OpenSansRegular"}}>Admin Delivery</Text></View>
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:70,color:"#696969"}}>Commission</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:70,color:"#696969",fontFamily:"OpenSansRegular"}}>Commission</Text>
             
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={adminDelivery} onChangeText={(text)=>setAdminDelivery(text)} keyboardType="number-pad" />
            
             </View>
 
            
             <View style={{flexDirection:'column'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:65,color:"#696969"}}>Admin Pickup</Text></View>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:65,color:"#696969",fontFamily:"OpenSansRegular"}}>Admin Pickup</Text></View>
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:70,color:"#696969"}}>Commission</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:70,color:"#696969",fontFamily:"OpenSansRegular"}}>Commission</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={adminPickup} onChangeText={(text)=>setAdminPickup(text)} keyboardType="number-pad"/>
             </View>
 
             
             <View style={{flexDirection:'column'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:56,color:"#696969"}}>Minimum order</Text></View>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:56,color:"#696969",fontFamily:"OpenSansRegular"}}>Minimum order</Text></View>
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:100,color:"#696969"}}>Amount</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:20,marginBottom:10,marginRight:98,color:"#696969",fontFamily:"OpenSansRegular"}}>Amount</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={minAmount} onChangeText={(text)=>setMinAmount(text)} keyboardType="number-pad"/>
             </View>
             
@@ -112,19 +112,18 @@ const detailScreen = ({navigation}) =>{
 
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:1,marginLeft:22,marginBottom:10,marginRight:45,color:"#696969"}}>Licence Number</Text>
-            <Text style={{color:"#696969"}}>:</Text>
+            <Text style={{marginTop:1,marginLeft:22,marginBottom:10,marginRight:40,color:"#696969",fontFamily:"OpenSansRegular"}}>Licence Number</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
             <TextInput style={{marginLeft:5}} value={licence} onChangeText={(text)=>setLicence(text)} keyboardType="number-pad"/>
             </View>
             
-
             
             <View style={styles.view4}>
-            <Text style={{marginLeft:45,marginTop:10,color:"#696969"}}>Enter Delivery Radius in km</Text>
+            <Text style={{marginLeft:45,marginTop:10,color:"#696969",fontFamily:"OpenSansRegular"}}>Enter Delivery Radius in km</Text>
             <TextInput style={styles.input} value={deliveryRadius} onChangeText={(text)=>setDeliveryRadius(text)} keyboardType="number-pad" />
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:5,marginLeft:45,color:"#696969", marginRight:35}}>View on Map</Text>
+            <Text style={{marginTop:5,marginLeft:45,color:"#696969", marginRight:35,fontFamily:"OpenSansRegular"}}>View on Map</Text>
             
             <Image source={require('../assets/map.png')} style={{width:"15%",height:"100%",marginTop:10}}></Image>
            
@@ -133,8 +132,10 @@ const detailScreen = ({navigation}) =>{
 
             <TouchableOpacity  onPress={()=>navigation.navigate("restScreen")}>
             <Text style={{backgroundColor:"#FDC913", marginLeft:95,fontSize:15,fontWeight:'bold',
-            color:"white",height:"38%",paddingTop:8,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40}}>Save</Text>
+            color:"white",height:"38%",paddingTop:8,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40,fontFamily:"OpenSansBold"}}>Save</Text>
             </TouchableOpacity>
+
+           
         </View>
         </ImageBackground>
         </ScrollView>
@@ -150,40 +151,25 @@ export default detailScreen;
 
 const styles = StyleSheet.create({
     
-    logo:{
-        
-        paddingLeft:25,
-        paddingTop:35,
-        fontSize:30,
-        height: 100,
-        width: "100%",
-        backgroundColor: "#f5fffa",
-        //borderRadius: 5,
-        elevation: 20,
-        color:"#696969",
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-    },
+ 
     rest:{
         fontSize:25,
         marginLeft:75,
-        marginTop:30,
+        marginTop:60,
         marginBottom:10,
-        color:"#696969"
+        color:"#696969",
+        fontFamily:"OpenSansSemiBold"
     },
     back:{
         fontSize:15,
-        marginTop:25,
-        marginLeft:60,
-        color:"#696969"
+        marginTop:55,
+        marginLeft:50,
+        color:"#696969",
+        fontFamily:"OpenSansRegular"
 
     },
     view3:{
-        marginBottom:220,
-        paddingLeft:0,
-        paddingTop:0,
+        marginBottom:20,
         marginLeft:18,
         height: 670,
         width: "90%",
@@ -219,6 +205,7 @@ const styles = StyleSheet.create({
        marginTop:10,
        marginLeft:85,
        width:"35%",
+       backgroundColor:"white"
        
        
    

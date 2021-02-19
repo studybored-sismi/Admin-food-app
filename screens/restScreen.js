@@ -1,19 +1,35 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, ScrollView,Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {Button} from 'react-native-paper';
+
 import Icons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/AntDesign';
+import Icon1 from 'react-native-vector-icons/Entypo';
 
 const restScreen = ({navigation}) =>{
+    const onDelete = () =>{
+        Alert.alert(
+            'Are you sure ',
+            'you want to delete this ?',
+            [
+              {text: 'Yes'},
+              {text: 'No', style: 'No'},
+            ],
+            { 
+              cancelable: true 
+            }
+          );
+    }
+  
     return(
         
         <View style={{backgroundColor:"#f5fffa"}}>
-            <Text style={styles.logo}>LOGO</Text>
-            <View style={{marginBottom:180}}>
+            
+            <View>
             <ScrollView showsVerticalScrollIndicator={false}>
            
             <View style={{marginBottom:40,flexDirection:'row'}}>
-                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:10,marginLeft:10}}></Icons>
+                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
             <Text style={styles.rest}>Restaurant</Text>
             <Text style={styles.back} onPress={()=>navigation.navigate("tabScreen")}>Back</Text>
             </View>
@@ -23,7 +39,7 @@ const restScreen = ({navigation}) =>{
         
             <TouchableOpacity  onPress={()=>navigation.navigate("regScreen")}>
             <Text style={{backgroundColor:"#FDC913",
-            color:"white",height:38,paddingTop:10,paddingLeft:40,borderRadius:20,width:"100%",paddingRight:40}}>Add</Text>
+            color:"white",height:38,paddingTop:10,paddingLeft:40,borderRadius:20,width:"100%",paddingRight:40,fontFamily: 'OpenSansBold'}}>Add</Text>
             </TouchableOpacity>
  
             </View>
@@ -33,34 +49,59 @@ const restScreen = ({navigation}) =>{
             <View style={{flexDirection:"row"}}>
             <Text style={styles.reg}>Registered Restaurant</Text>
             <View style={{flexDirection:'column'}}>
-            <Text style={{marginLeft:25, marginTop:10, color:"#696969",}}>Blocked </Text>
-            <Text style={{marginLeft:25, color:"#696969",}}>Restaurant</Text></View>
+            <Text style={{marginLeft:25, marginTop:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>Blocked </Text>
+            <Text style={{marginLeft:25, color:"#696969",fontFamily: 'OpenSansRegular'}}>Restaurant</Text></View>
             </View>
 
             
-            <View style={styles.view1}>
-            <TouchableOpacity onPress={()=>navigation.navigate('tabScreen')}>
-            <Text style={{marginBottom:10, color:"#696969",}}>ID</Text>
-            <Text style={{ color:"#696969",}}>Restaurant</Text>
-            <Text style={{marginLeft:10, color:"#696969",}}>Name</Text>
-            </TouchableOpacity>
+            <View style={styles.view1}  >
+           
+            
+            <Text style={{marginBottom:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>ID</Text>
+            <View style={{flexDirection:'row'}}>
+            <View style={{flexDirection:'column'}}>
+            <Text style={{ color:"#696969",marginRight:80,fontFamily: 'OpenSansRegular'}}>Restaurant</Text>
+            <Text style={{marginLeft:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>Name</Text></View>
+            <Icon1 name="pencil" size={20} style={{marginRight:10}} onPress={()=>navigation.navigate("EditScreen")}></Icon1>
+            <Icon name="delete" size={20} onPress={onDelete}></Icon>
+            </View>
+            
+            
             </View>
 
+
+              
             <View style={styles.view1}>
-            <TouchableOpacity onPress={()=>navigation.navigate('tabScreen')}>
-            <Text style={{marginBottom:10, color:"#696969",}}>ID</Text>
-            <Text style={{ color:"#696969"}}>Restaurant</Text>
-            <Text style={{marginLeft:10, color:"#696969"}}>Name</Text>
-            </TouchableOpacity>
+            
+            
+            <Text style={{marginBottom:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>ID</Text>
+            <View style={{flexDirection:'row'}}>
+            <View style={{flexDirection:'column'}}>
+            <Text style={{ color:"#696969",marginRight:80,fontFamily: 'OpenSansRegular'}}>Restaurant</Text>
+            <Text style={{marginLeft:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>Name</Text></View>
+            <Icon1 name="pencil" size={20} style={{marginRight:10}} onPress={()=>navigation.navigate("EditScreen")}></Icon1>
+            <Icon name="delete" size={20} onPress={onDelete}></Icon>
+            </View>
+            
+            
+            </View>
+             
+            <View style={styles.view1}>
+            
+          
+            <Text style={{marginBottom:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>ID</Text>
+            <View style={{flexDirection:'row'}}>
+            <View style={{flexDirection:'column'}}>
+            <Text style={{ color:"#696969",marginRight:80,fontFamily: 'OpenSansRegular'}}>Restaurant</Text>
+            <Text style={{marginLeft:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>Name</Text></View>
+            <Icon1 name="pencil"  onPress={()=>navigation.navigate("EditScreen")} size={20} style={{marginRight:10}}></Icon1>
+            <Icon name="delete" size={20} onPress={onDelete}></Icon>
+            </View>
+            
+           
             </View>
 
-            <View style={styles.view1}>
-            <TouchableOpacity onPress={()=>navigation.navigate('tabScreen')}>
-            <Text style={{marginBottom:10,  color:"#696969",}}>ID</Text>
-            <Text style={{ color:"#696969"}}>Restaurant</Text>
-            <Text style={{marginLeft:10, color:"#696969",}}>Name</Text>
-            </TouchableOpacity>
-            </View>
+          
 
             </View>
             </ScrollView>
@@ -81,40 +122,29 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection:'row'
     },
-    logo:{
-        
-        paddingLeft:25,
-        paddingTop:35,
-        fontSize:30,
-        height: 100,
-        width: "100%",
-        backgroundColor: "#f5fffa",
-        //borderRadius: 5,
-        elevation: 20,
-        color:"#696969",
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        
-    },
+    
     rest:{
         fontSize:20,
         marginLeft:75,
-        marginTop:30,
+        marginTop:60,
         color:"#696969",
+        fontFamily: 'OpenSansSemiBold',
+        
+
     },
     back:{
         fontSize:15,
-        marginTop:25,
-        marginLeft:60,
+        marginTop:55,
+        marginLeft:70,
         color:"#696969",
+        fontFamily: 'OpenSansRegular'
     },
     rest2:{
         fontSize:35,
         marginLeft:20,
-        marginRight:30,
+        marginRight:20,
         color:"#696969",
+        fontFamily: 'OpenSansBold'
     
         
     },
@@ -149,6 +179,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         marginBottom:50,
         color:"#696969",
+        fontFamily: 'OpenSansRegular'
 
     },
     view3:{

@@ -16,13 +16,14 @@ const Tab = createBottomTabNavigator();
 
 export default function tabScreen() {
     return (
-        <Tab.Navigator initialRouteName="Restaurant details" tabBarOptions={{activeTintColor:"black"}}>
+        <Tab.Navigator initialRouteName="Restaurant details" tabBarOptions={{activeTintColor:"#FDC913"}}>
             <Tab.Screen
                 name="Restaurant details"
                 component={detailScreen}
                 options={{
                     tabBarColor: 'black',
                     tabBarLabel: 'Restaurant details',
+                    fontFamily:"OpenSansRegular"
                     
                     
                   
@@ -37,6 +38,7 @@ export default function tabScreen() {
 
                     tabBarColor: 'black',
                     tabBarLabel: 'Food Items',
+                    fontFamily:"OpenSansRegular"
                   
 
                 }} />
@@ -47,6 +49,7 @@ export default function tabScreen() {
                 options={{
                     tabBarColor: 'black',
                     tabBarLabel: 'Rating & Review',
+                    fontFamily:"OpenSansRegular"
                     
                 }} />
          
@@ -57,6 +60,7 @@ export default function tabScreen() {
 
                     tabBarColor: 'black',
                     tabBarLabel: 'Configuration',
+                    fontFamily:"OpenSansRegular"
                    
 
                 }} />
@@ -65,6 +69,3 @@ export default function tabScreen() {
     )
 }
 
-const styles = StyleSheet.create({
-
-});
