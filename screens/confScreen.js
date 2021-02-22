@@ -126,7 +126,9 @@ const styles = StyleSheet.create({
        marginLeft:45,
        width:"70%",
        borderRadius:2,
-       backgroundColor:"white"
+       backgroundColor:"white",
+       fontFamily:"OpenSansRegular",
+       color:"#696969"
        
    
     },
@@ -154,6 +156,8 @@ const styles = StyleSheet.create({
        width:"20%",
        height:"40%",
        borderRadius:2,
+       fontFamily:"OpenSansRegular",
+       color:"#696969"
       
    
     },

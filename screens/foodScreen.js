@@ -22,9 +22,9 @@ const foodScreen = ({navigation}) =>{
 
          <View style={styles.view3}>
             <View style={{flexDirection:'row'}}>
-            <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+            <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
-                    <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+                    <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
             </View>
             <View style={{flexDirection:'row'}}>
@@ -44,9 +44,9 @@ const foodScreen = ({navigation}) =>{
             
 
             <View style={{flexDirection:'row'}}>
-            <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+            <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
-                    <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+                    <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
             </View>
             <View style={{flexDirection:'row'}}>
@@ -66,9 +66,9 @@ const foodScreen = ({navigation}) =>{
 
 
             <View style={{flexDirection:'row'}}>
-            <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+            <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
-                    <Image source={require('../assets/berger.jpg')} style={styles.Image} >
+                    <Image source={require('../assets/burger1.jpg')} style={styles.Image} >
                     </Image>
             </View>
 

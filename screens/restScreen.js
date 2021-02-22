@@ -9,14 +9,14 @@ import Icon1 from 'react-native-vector-icons/Entypo';
 const restScreen = ({navigation}) =>{
     const onDelete = () =>{
         Alert.alert(
-            'Are you sure ',
-            'you want to delete this ?',
+            ' ',
+            'Are you sure want to delete this ?',
             [
               {text: 'Yes'},
               {text: 'No', style: 'No'},
             ],
             { 
-              cancelable: true 
+              cancelable: false
             }
           );
     }
@@ -31,15 +31,16 @@ const restScreen = ({navigation}) =>{
             <View style={{marginBottom:40,flexDirection:'row'}}>
                 <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
             <Text style={styles.rest}>Restaurant</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("tabScreen")}>Back</Text>
+            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryTips")}>Back</Text>
             </View>
 
             <View style={{flexDirection:"row"}}>
-            <Text style={styles.rest2}>Restaurant</Text>
+            <Text style={styles.rest2} >Restaurant</Text>
         
-            <TouchableOpacity  onPress={()=>navigation.navigate("regScreen")}>
+            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
             <Text style={{backgroundColor:"#FDC913",
-            color:"white",height:38,paddingTop:10,paddingLeft:40,borderRadius:20,width:"100%",paddingRight:40,fontFamily: 'OpenSansBold'}}>Add</Text>
+            color:"white",height:38,paddingTop:10,
+            paddingLeft:40,borderRadius:20,width:"100%",paddingRight:40,fontFamily: 'OpenSansBold'}}>Add</Text>
             </TouchableOpacity>
  
             </View>
@@ -49,8 +50,10 @@ const restScreen = ({navigation}) =>{
             <View style={{flexDirection:"row"}}>
             <Text style={styles.reg}>Registered Restaurant</Text>
             <View style={{flexDirection:'column'}}>
-            <Text style={{marginLeft:25, marginTop:10, color:"#696969",fontFamily: 'OpenSansRegular'}}>Blocked </Text>
-            <Text style={{marginLeft:25, color:"#696969",fontFamily: 'OpenSansRegular'}}>Restaurant</Text></View>
+            <Text style={{marginLeft:25, marginTop:10, 
+                color:"#696969",fontFamily: 'OpenSansRegular'}}>Blocked </Text>
+            <Text style={{marginLeft:25, color:"#696969",
+            fontFamily: 'OpenSansRegular'}}>Restaurant</Text></View>
             </View>
 
             

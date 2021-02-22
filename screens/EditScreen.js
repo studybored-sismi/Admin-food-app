@@ -30,9 +30,6 @@ const EditScreen = ({navigation}) =>{
             <Text style={{marginTop:60,color:"#696969", fontFamily: 'OpenSansRegular'}} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
             </View>
 
-            
-
-
             <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Name</Text>
             <TextInput style={styles.line} value={name} onChangeText={(text)=>setName(text)}  />
 
@@ -103,10 +100,15 @@ const EditScreen = ({navigation}) =>{
                     <Text style={{marginRight:86,fontFamily:"OpenSansRegular"}}>North Indian</Text>
 
 
-                    <CheckBox value={northselect}
+                    <CheckBox 
+                  
+                    value={northselect}
                     onValueChange={setNorthSelect}
-                    style={{marginLeft:10}}>
-
+                    style={{marginLeft:10}}
+                    
+                    
+                     >
+                    
                     </CheckBox></View>
 
                 </View>
@@ -166,7 +168,9 @@ const styles = StyleSheet.create({
         // paddingBottom:20
         flexDirection: 'row',
         marginLeft:35,
-        marginRight:35
+        marginRight:35,
+        fontFamily:"OpenSansRegular",
+        color:"#696969"
 
     },
     drop:{

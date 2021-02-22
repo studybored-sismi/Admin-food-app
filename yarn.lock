@@ -831,7 +831,7 @@
     "@babel/preset-env" "^7.4.4"
     "@babel/preset-typescript" "^7.3.3"
 
-"@expo/config-plugins@1.0.18":
+"@expo/config-plugins@~1.0.13", "@expo/config-plugins@1.0.18":
   "version" "1.0.18"
   dependencies:
     "@expo/config-types" "^40.0.0-beta.2"
@@ -2360,6 +2360,15 @@
     "fbjs" "1.0.0"
     "fontfaceobserver" "^2.1.0"
 
+"expo-image-picker@^10.0.0":
+  "integrity" "sha512-smANMTtxqPDxGYPVQrppJAKxla2/UN4bTGfcmX7c8X8psaNUd4Bh8z9Uk/NUz00SGUWrU0Oa1K/rVrX1e0c2Hw=="
+  "resolved" "https://registry.npmjs.org/expo-image-picker/-/expo-image-picker-10.0.0.tgz"
+  "version" "10.0.0"
+  dependencies:
+    "@expo/config-plugins" "~1.0.13"
+    "expo-permissions" "~11.0.0"
+    "uuid" "7.0.2"
+
 "expo-keep-awake@~8.4.0":
   "version" "8.4.0"
 
@@ -2377,8 +2386,13 @@
 "expo-location@~10.0.0":
   "version" "10.0.0"
 
-"expo-permissions@~10.0.0":
+"expo-permissions@^10.0.0", "expo-permissions@~10.0.0":
   "version" "10.0.0"
+
+"expo-permissions@~11.0.0":
+  "integrity" "sha512-5+sFdU1HS/4aK9O7AsoLSNjG4f0UzlA3/nBHOPnWxxY2HRFnQp764tSsfSJRnGhM89Qxort6n2RzOusMoNP5ig=="
+  "resolved" "https://registry.npmjs.org/expo-permissions/-/expo-permissions-11.0.0.tgz"
+  "version" "11.0.0"
 
 "expo-secure-store@~9.3.0":
   "version" "9.3.0"
@@ -4077,6 +4091,11 @@
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-2.17.1.tgz"
   "version" "2.17.1"
 
+"react-native-simple-radio-button@^2.7.4":
+  "integrity" "sha512-QOZNmJUn0ViBGU+at7wAG/uGzd5PfXi0kMHr9lfTCLXknW/f9f2fOVjxjdHvOCdf/zA/eMJBjGjtusSDzQf1+w=="
+  "resolved" "https://registry.npmjs.org/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.4.tgz"
+  "version" "2.7.4"
+
 "react-native-vector-icons@*", "react-native-vector-icons@^8.0.0":
   "integrity" "sha512-u3NWvO+b7nTCxx7IU4EzukFyiApHdpjbsjKgMFEI2Ma+r1Mq48s0ajvBCIPI7LCgKBGYclOxWmMV9DHV2cJFlw=="
   "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-8.0.0.tgz"
@@ -4816,6 +4835,11 @@
 
 "uuid@^7.0.3":
   "version" "7.0.3"
+
+"uuid@7.0.2":
+  "integrity" "sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-7.0.2.tgz"
+  "version" "7.0.2"
 
 "vary@~1.1.2":
   "version" "1.1.2"

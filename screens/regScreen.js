@@ -96,7 +96,8 @@ const regScreen = ({navigation}) =>{
                     <Text style={{marginRight:129,fontFamily:"OpenSansRegular"}}>Italian</Text>
                     <CheckBox value={italianselect}
                     onValueChange={setItalianSelect}
-                    style={{marginLeft:10}}>
+                    style={{marginLeft:10}}
+                    >
 
                     </CheckBox></View>
                 <View style={{flexDirection:'row', }}>
@@ -106,14 +107,15 @@ const regScreen = ({navigation}) =>{
 
                     <CheckBox value={northselect}
                     onValueChange={setNorthSelect}
-                    style={{marginLeft:10}}>
+                    style={{marginLeft:10}}
+                    >
 
                     </CheckBox></View>
 
                 </View>
 
             
- <TouchableOpacity style={{width:"100%",}} onPress={()=>navigation.navigate("restScreen")} >
+ <TouchableOpacity style={{width:"100%",}} onPress={()=>navigation.navigate("tabScreen")} >
             <Text style={{backgroundColor:"#FDC913", marginLeft:45,fontSize:15,fontWeight:"bold",marginBottom:40,
             color:"white",height:"30%",paddingTop:10,paddingLeft:110,borderRadius:20,width:"75%",paddingRight:40,fontFamily:"OpenSansBold"}}>Submit</Text>
             </TouchableOpacity>
@@ -167,7 +169,9 @@ const styles = StyleSheet.create({
         // paddingBottom:20
         flexDirection: 'row',
         marginLeft:35,
-        marginRight:35
+        marginRight:35,
+        fontFamily:"OpenSansRegular",
+        color:"#696969"
 
     },
     drop:{

@@ -13,6 +13,15 @@ import foodScreen from './screens/foodScreen';
 import detailScreen from './screens/detailScreen';
 import confScreen from './screens/confScreen';
 import EditScreen from './screens/EditScreen';
+import deliveryTips from './screens/deliveryTips';
+import deliveryBoy from './screens/deliveryBoy';
+import deliveryRegScreen from './screens/delveryRegScreen';
+import deliveryEditScreen from './screens/deliveryEditScreen';
+import settings from './screens/settings';
+import fontSize from './screens/fontSize';
+import Mode from './screens/Mode';
+import contact from './screens/contact';
+import Report from './screens/Report';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -88,6 +97,72 @@ export default function App() {
           }
         />
 
+<Stack.Screen name="deliveryTips"
+          component={deliveryTips}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="deliveryBoy"
+          component={deliveryBoy}
+          options={
+            { headerShown: false }
+          }
+        />
+
+
+<Stack.Screen name="deliveryRegScreen"
+          component={deliveryRegScreen}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="deliveryEditScreen"
+          component={deliveryEditScreen}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="settings"
+          component={settings}
+          options={
+            { headerShown: false }
+          }
+        />
+
+
+  
+<Stack.Screen name="fontSize"
+          component={fontSize}
+          options={
+            { headerShown: false }
+          }
+        />
+
+
+<Stack.Screen name="Mode"
+          component={Mode}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="contact"
+          component={contact}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="Report"
+          component={Report}
+          options={
+            { headerShown: false }
+          }
+        />
 </Stack.Navigator>
     </NavigationContainer>
   );
