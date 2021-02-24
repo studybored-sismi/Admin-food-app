@@ -1,8 +1,7 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput,CheckBox} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';;
-import Icons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/AntDesign'
+
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
@@ -12,9 +11,13 @@ const EditScreen = ({navigation}) =>{
     const[email,setEmail] = useState();
     const [phone,setPhone]= useState();
     const [address, setAddress] = useState();
- 
+    const [basic,setBasic] = useState();
+    const [charge,setCharge] = useState();
+    const [minimum,setMinimum] = useState();
     const[licence,setLicence]= useState();
     const[item,setItem] = useState('Delivery');
+  
+
     const [asianSelect,setAsianSelect] =  useState(false);
     const [italianselect,setItalianSelect] = useState(false);
     const [northselect,setNorthSelect] = useState(false);
@@ -27,7 +30,8 @@ const EditScreen = ({navigation}) =>{
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{flexDirection:"row"}}>
             <Text style={styles.res}>Edit Restaurant</Text>
-            <Text style={{marginTop:60,color:"#696969", fontFamily: 'OpenSansRegular'}} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
+            <Text style={{marginTop:60,color:"#696969", fontFamily: 'OpenSansRegular'}} 
+            onPress={()=>navigation.navigate("regScreen")}>Back</Text>
             </View>
 
             <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Name</Text>
@@ -41,6 +45,16 @@ const EditScreen = ({navigation}) =>{
 
             <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Address</Text>
             <TextInput style={styles.line} value={address} onChangeText={(text)=>setAddress(text)} />
+
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Basic Delivery Charge</Text>
+            <TextInput style={styles.line} value={basic} onChangeText={(text)=>setBasic(text)} keyboardType="number-pad" />
+
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Delivery Charge (Per Km)</Text>
+            <TextInput style={styles.line} value={charge} onChangeText={(text)=>setCharge(text)} keyboardType="number-pad" />
+
+            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Minimum Order Amount</Text>
+            <TextInput style={styles.line} value={minimum} onChangeText={(text)=>setMinimum(text)} keyboardType="number-pad" />
+
 
             <View style={{flexDirection:'row'}}>
             <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Delivery Mode</Text>

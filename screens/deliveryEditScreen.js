@@ -6,9 +6,15 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import * as ImagePicker from 'expo-image-picker';
 import {RadioButton} from 'react-native-paper';
+import {useTheme} from '@react-navigation/native';
+import DropDownPicker from 'react-native-dropdown-picker';
+
 //import * as Permissions from 'expo-permissions';
 
 const deliveryEditScreen=({navigation})=>{
+  var items
+  var items1
+  const {colors} = useTheme();
     const [name,setName] = useState();
     const [email,setEmail] = useState();
     const [phone,setPhone] = useState();
@@ -18,6 +24,9 @@ const deliveryEditScreen=({navigation})=>{
     const [image,setImage] = useState(null);
     const [checked, setChecked] = useState('first');
     const [check,setCheck] = useState('first');
+
+    const[item,setItem] = useState('Part time');
+    const [Items,setItems] = useState('Bike');
 
     useEffect(() => {
         (async () => {
@@ -47,17 +56,19 @@ const deliveryEditScreen=({navigation})=>{
 
     
     return(
-        <View  style={{backgroundColor:'#f5fffa'}}>
+        <View  style={{backgroundColor:"#f5fffa"}}>
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{flexDirection:"row"}}>
              <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
             <Text style={styles.boy}>Edit</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("restScreen")}>Back</Text></View>
+            <Text style={styles.back}
+         onPress={()=>navigation.navigate("deliveryRegScreen")}>Back</Text></View>
 
             
              {image && <Image source={{ uri: image }} style={{ width: 150, height: 150,borderRadius:80,marginLeft:100,marginTop:20 }} />}
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginLeft:100,color:"#696969",fontFamily:"OpenSansRegular",marginTop:15}}>Add Profile Picture</Text>
+            <Text style={{marginLeft:100,color:"#696969",color:colors.textColor,
+            fontFamily:"OpenSansRegular",marginTop:15}}>Add Profile Picture</Text>
             <Icon name="camera" color="#1e90ff" size={25} onPress={pickImage}
              style={{marginLeft:10,marginTop:10}}></Icon>
             
@@ -102,13 +113,59 @@ const deliveryEditScreen=({navigation})=>{
                 <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969"}}>Occupation</Text>
                 <TextInput style={styles.line} value={occupation} onChangeText={(text)=>setOccupation(text)}  />
 
+                <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969",marginBottom:10}}>Job Detail</Text>
+                <DropDownPicker
+                    items={[
+                        { label: 'Part time', value: 'Part time' },
+                        { label: 'Full time', value: 'Full time' },
+                       
+                        
+                    ]}
+                    defaultValue={items}
+                    containerStyle={{ height: 40 ,width:"80%",marginLeft:28}}
+                    placeholder="Select job type"
+                    style={styles.drop}
+                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
+                    itemStyle={{
+                        justifyContent: 'flex-start'
+                    }}
+                    dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    onChangeItem={(item)=>setItem(item.value)}
+                    
+                />
+           
+           <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969",marginBottom:10,marginTop:10}}>Type of Vehicle</Text>
+                <DropDownPicker
+                    items={[
+                        { label: 'Bike', value: 'Bike' },
+                        { label: 'Bicycle', value: 'Bicycle' },
+                   
+                        
+                    ]}
+
+                    defaultValue={items1}
+                    containerStyle={{ height: 40 ,width:"80%",marginLeft:28}}
+                    placeholder="Select vechicle"
+                    style={styles.drop}
+                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
+                    itemStyle={{
+                        justifyContent: 'flex-start'
+                    }}
+                    dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    onChangeItem={(Items)=>setItems(Items.value)}
+                    
+                />
+                
+           
+
 
                 <View style={{flexDirection:"row"}}>
-                <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",marginTop:10,color:"#696969"}}>Commission</Text>
+                <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",marginTop:15,color:"#696969"}}>Commission</Text>
                 <TextInput style={styles.input} value={commission} onChangeText={(text)=>setCommission(text)} keyboardType="number-pad"/>
                 </View>
 
                 <View style={{flexDirection:'row',color:"red",marginLeft:50}}>
+                  
     
       <RadioButton
         value="first"
@@ -166,7 +223,7 @@ const styles = StyleSheet.create({
     view3:{
         marginBottom:20,
         marginLeft:25,
-        height: 570,
+        height: 720,
         width: "86%",
         backgroundColor: "white",
         borderRadius: 5,
@@ -194,7 +251,7 @@ const styles = StyleSheet.create({
     input:{
         borderColor:"#696969",
         borderWidth:1,
-       marginTop:10,
+       marginTop:15,
        marginLeft:15,
        width:"46%",
        borderRadius:2,

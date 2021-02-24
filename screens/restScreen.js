@@ -1,12 +1,16 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView,Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import {useTheme} from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Entypo';
 
+
 const restScreen = ({navigation}) =>{
+
+   
+  
     const onDelete = () =>{
         Alert.alert(
             ' ',
@@ -29,15 +33,17 @@ const restScreen = ({navigation}) =>{
             <ScrollView showsVerticalScrollIndicator={false}>
            
             <View style={{marginBottom:40,flexDirection:'row'}}>
-                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
-            <Text style={styles.rest}>Restaurant</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryTips")}>Back</Text>
+                <Icons name="ios-menu" onPress={() => navigation.navigate("settings")}
+                 color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
+ 
+             <Text style={styles.rest}>Restaurant</Text>
+            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryRegScreen")}>Back</Text>
             </View>
 
             <View style={{flexDirection:"row"}}>
-            <Text style={styles.rest2} >Restaurant</Text>
+            <Text style={styles.rest2 }>Restaurant</Text>
         
-            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
+            <TouchableOpacity  onPress={()=>navigation.navigate("regScreen")}>
             <Text style={{backgroundColor:"#FDC913",
             color:"white",height:38,paddingTop:10,
             paddingLeft:40,borderRadius:20,width:"100%",paddingRight:40,fontFamily: 'OpenSansBold'}}>Add</Text>
@@ -133,6 +139,7 @@ const styles = StyleSheet.create({
         color:"#696969",
         fontFamily: 'OpenSansSemiBold',
         
+        
 
     },
     back:{
@@ -146,6 +153,7 @@ const styles = StyleSheet.create({
         fontSize:35,
         marginLeft:20,
         marginRight:20,
+        //color:colors.textColor,
         color:"#696969",
         fontFamily: 'OpenSansBold'
     

@@ -3,15 +3,18 @@ import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} fr
 //import Icons from 'react-native-vector-icons/Foundation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
+import {useTheme} from '@react-navigation/native';
 
 const deliveryBoy=({navigation})=>{
-
+    const {colors} = useTheme();
     const [id,setId] =useState();
     const [image,setImage] = useState();
     const [name,setName] = useState();
     const [phone,setPhone] = useState();
     const [email,setEmail] = useState();
     const [occupation,setOccupation] = useState();
+    const [job,setJob] =useState();
+    const [vehicle,setVehicle] = useState();
     const [commission,setCommission] = useState();
     const [revenu,setRevenu] = useState();
     const [status,setStatus] = useState();
@@ -79,6 +82,20 @@ const deliveryBoy=({navigation})=>{
                 <TextInput style={{marginLeft:5,marginTop:13,fontFamily:"OpenSansRegular",fontSize:9}} value={occupation} onChangeText={(text)=>setOccupation(text)}/>
                 </View>
 
+                <View style={{flexDirection:'row'}}>
+                <Text style={{marginLeft:25,marginTop:15,color:"#696969",fontFamily:"OpenSansRegular"}}>Job Detail</Text>
+                <Text style={{marginLeft:69,marginTop:15,color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
+                <TextInput style={{marginLeft:5,marginTop:13,fontFamily:"OpenSansRegular",fontSize:9}} 
+                value={job} onChangeText={(text)=>setJob(text)}/>
+                </View>
+
+                <View style={{flexDirection:'row'}}>
+                <Text style={{marginLeft:25,marginTop:15,color:"#696969",fontFamily:"OpenSansRegular"}}>Vehicle type</Text>
+                <Text style={{marginLeft:52,marginTop:15,color:"#696969",fontFamily:"OpenSansRegular"}}>:</Text>
+                <TextInput style={{marginLeft:5,marginTop:13,fontFamily:"OpenSansRegular",fontSize:9}}
+                 value={vehicle} onChangeText={(text)=>setVehicle(text)}/>
+                </View>
+
                 <View style={{flexDirection:'column'}}>
                 <Text style={{marginLeft:25,marginTop:15,color:"#696969",fontFamily:"OpenSansRegular"}}>Restaurant</Text></View>
                 <View style={{flexDirection:'row'}}>
@@ -124,14 +141,14 @@ const styles = StyleSheet.create({
         marginTop:50,
         marginLeft:70,
         fontSize:20,
-        color:"#696969",
+      
         fontFamily:"OpenSansSemiBold"
     },
     back:{
         fontSize:15,
         marginTop:50,
         marginLeft:70,
-        color:"#696969",
+      
         fontFamily:"OpenSansRegular"
 
     },
@@ -140,7 +157,7 @@ const styles = StyleSheet.create({
         marginTop:40,
         fontSize:26,
         fontFamily:"OpenSansBold",
-        color:"#696969",
+       
         marginRight:40
 
     },
@@ -165,7 +182,7 @@ const styles = StyleSheet.create({
     view3:{
         marginBottom:20,
         marginLeft:25,
-        height: 500,
+        height: 570,
         width: "86%",
         backgroundColor: "white",
         borderRadius: 5,

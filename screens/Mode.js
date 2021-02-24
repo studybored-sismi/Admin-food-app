@@ -1,15 +1,15 @@
 import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} from 'react-native';
 
-
+import {EventRegister} from 'react-native-event-listeners';
 import {RadioButton} from 'react-native-paper';
 
 
 const Mode = ({navigation}) =>{
 
     
-    const [checked, setChecked] = useState('first');
-   
+   const [checked, setChecked] = useState('first');
+   //const [darkMode,setDarkMode] = useState(false);
 
     return(
         <View style={styles.view4}>
@@ -33,6 +33,7 @@ const Mode = ({navigation}) =>{
         value="second"
         status={ checked === 'second' ? 'checked' : 'unchecked' }
         onPress={() => setChecked('second')}
+     
         color="#696969"
         
       />

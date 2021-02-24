@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} fr
 //import Icons from 'react-native-vector-icons/Foundation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
-
+import {useTheme} from '@react-navigation/native';
 
 const deliveryTips =({navigation})=>{
+    
     return(
-        <View style={{backgroundColor:"#f5fffa",}}>
+        <View style={{backgroundColor:"#f5fffa"}}>
             <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#f5fffa"}}>
         <View style={{backgroundColor:"#f5fffa"}}>
             <View style={{flexDirection:"row"}}>
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop:50,
         marginLeft:70,
         color:"#696969",
-        fontFamily:"OpenSansRegular"
+         fontFamily:"OpenSansRegular"
 
     },
     Tips2:{

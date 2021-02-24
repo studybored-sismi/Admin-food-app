@@ -16,6 +16,7 @@ const detailScreen = ({navigation}) =>{
     const [adminPickup,setAdminPickup] = useState();
     const [minAmount,setMinAmount] = useState();
     const [licence,setLicence] =useState();
+    const [category,setCategory] = useState();
     const [deliveryRadius,setDeliveryRadius] = useState();
     
     return(
@@ -114,6 +115,12 @@ const detailScreen = ({navigation}) =>{
             <TextInput style={styles.input2} value={licence} onChangeText={(text)=>setLicence(text)}></TextInput>
             </View>
           
+            <View style={{flexDirection:'row'}}>
+            <Text style={{marginTop:5,marginLeft:20,marginBottom:10,
+                marginRight:91,color:"#696969",fontFamily:"OpenSansRegular"}} >Category</Text>
+            <Text style={{color:"#696969",fontFamily:"OpenSansRegular",marginTop:5}}>:</Text>
+            <TextInput style={styles.input2} value={category} onChangeText={(text)=>setCategory(text)}></TextInput>
+            </View>
             
             
             <View style={styles.view4}>
@@ -121,16 +128,20 @@ const detailScreen = ({navigation}) =>{
             <TextInput style={styles.input}  value={deliveryRadius} onChangeText={(text)=>setDeliveryRadius(text)} keyboardType="number-pad" />
 
             <View style={{flexDirection:'row'}}>
-            <Text style={{marginTop:5,marginLeft:45,color:"#696969", marginRight:35,fontFamily:"OpenSansRegular"}}>View on Map</Text>
-            
-            <Image source={require('../assets/map.png')} style={{width:"15%",height:"100%",marginTop:10}}></Image>
-           
+            <Text style={{marginTop:5,marginLeft:45,color:"#696969", marginRight:5,fontFamily:"OpenSansRegular"}}>View on Map</Text>
+            <View style={styles.map}>
+            <TouchableOpacity onPress={()=>navigation.navigate("Map")}>
+            <Image source={require('../assets/map.png')} style={{width:"105%",height:"100%",marginTop:10}}></Image>
+            </TouchableOpacity>
+            </View>
+         
+
             </View>
             </View>
 
             <TouchableOpacity  onPress={()=>navigation.navigate("restScreen")}>
             <Text style={{backgroundColor:"#FDC913", marginLeft:95,fontSize:15,fontWeight:'bold',
-            color:"white",height:"38%",paddingTop:8,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40,fontFamily:"OpenSansBold"}}>Save</Text>
+            color:"white",height:"38%",paddingTop:10,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40,fontFamily:"OpenSansBold"}}>Save</Text>
             </TouchableOpacity>
 
            
@@ -169,7 +180,7 @@ const styles = StyleSheet.create({
     view3:{
         marginBottom:20,
         marginLeft:18,
-        height: 720,
+        height: 760,
         width: "90%",
         backgroundColor: "white",
         borderRadius: 15,
@@ -179,6 +190,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 5,
         marginTop:130
+    },
+    map:{
+        marginBottom:20,
+        marginLeft:18,
+        height: 15,
+        width: "20%",
+        backgroundColor: "#f5fffa",
+        //borderRadius: 15,
+        //elevation: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        marginTop:0
     },
     view4:{
         marginBottom:20,

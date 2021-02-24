@@ -6,9 +6,14 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import * as ImagePicker from 'expo-image-picker';
 import {RadioButton} from 'react-native-paper';
+import {useTheme} from '@react-navigation/native';
+import DropDownPicker from 'react-native-dropdown-picker';
 //import * as Permissions from 'expo-permissions';
 
 const deliveryRegScreen=({navigation})=>{
+  var items
+  var items1
+ 
     const [name,setName] = useState();
     const [email,setEmail] = useState();
     const [phone,setPhone] = useState();
@@ -18,6 +23,8 @@ const deliveryRegScreen=({navigation})=>{
     const [image,setImage] = useState(null);
     const [checked, setChecked] = useState('first');
     const [check,setCheck] = useState('first');
+    const[item,setItem] = useState('Part time');
+    const [Items,setItems] = useState('Bike');
 
     useEffect(() => {
         (async () => {
@@ -102,6 +109,48 @@ const deliveryRegScreen=({navigation})=>{
                 <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969"}}>Occupation</Text>
                 <TextInput style={styles.line} value={occupation} onChangeText={(text)=>setOccupation(text)}  />
 
+                <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969",marginBottom:10}}>Job Detail</Text>
+                <DropDownPicker
+                    items={[
+                        { label: 'Part time', value: 'Part time' },
+                        { label: 'Full time', value: 'Full time' },
+                       
+                        
+                    ]}
+                    defaultValue={items}
+                    containerStyle={{ height: 40 ,width:"80%",marginLeft:28}}
+                    placeholder="Select job type"
+                    style={styles.drop}
+                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
+                    itemStyle={{
+                        justifyContent: 'flex-start'
+                    }}
+                    dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    onChangeItem={(item)=>setItem(item.value)}
+                    
+                />
+           
+           <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",color:"#696969",marginBottom:10,marginTop:10}}>Type of Vehicle</Text>
+                <DropDownPicker
+                    items={[
+                        { label: 'Bike', value: 'Bike' },
+                        { label: 'Bicycle', value: 'Bicycle' },
+                   
+                        
+                    ]}
+
+                    defaultValue={items1}
+                    containerStyle={{ height: 40 ,width:"80%",marginLeft:28}}
+                    placeholder="Select vechicle"
+                    style={styles.drop}
+                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
+                    itemStyle={{
+                        justifyContent: 'flex-start'
+                    }}
+                    dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    onChangeItem={(Items)=>setItems(Items.value)}
+                    
+                />
 
                 <View style={{flexDirection:"row"}}>
                 <Text style={{marginLeft:35,fontFamily:"OpenSansRegular",marginTop:10,color:"#696969"}}>Commission</Text>
@@ -167,7 +216,7 @@ const styles = StyleSheet.create({
     view3:{
         marginBottom:20,
         marginLeft:25,
-        height: 570,
+        height: 720,
         width: "86%",
         backgroundColor: "white",
         borderRadius: 5,

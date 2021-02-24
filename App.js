@@ -1,9 +1,13 @@
 
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState ,Component} from 'react';
+//import { NavigationContainer,
+ // DefaultTheme as NavigationDefaultTheme,
+ // DarkTheme as NavigationDarkTheme,useTheme} from '@react-navigation/native';
+ import {NavigationContainer,} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View ,Text} from 'react-native';
 import { useFonts } from 'expo-font';
+
 
 import restScreen from './screens/restScreen';
 import regScreen from './screens/regScreen';
@@ -21,10 +25,16 @@ import settings from './screens/settings';
 import fontSize from './screens/fontSize';
 import Mode from './screens/Mode';
 import contact from './screens/contact';
-import Report from './screens/Report';
+import Feedback from './screens/Feedback';
+import notification from './screens/notification';
+import Map from './screens/Map';
+
+
+
 
 const Stack = createStackNavigator();
 export default function App() {
+
   const [loaded] = useFonts({
     OpenSansRegular: require('./assets/fonts/OpenSans-Regular.ttf'),
     OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'),
@@ -34,11 +44,13 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+ 
 
   return (
    
-    <NavigationContainer>
-      
+   
+         <NavigationContainer  >
+            
       <Stack.Navigator>
 
       
@@ -157,14 +169,34 @@ export default function App() {
           }
         />
 
-<Stack.Screen name="Report"
-          component={Report}
+<Stack.Screen name="Feedback"
+          component={Feedback}
           options={
             { headerShown: false }
           }
         />
+
+<Stack.Screen name="notification"
+          component={notification}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="Map"
+          component={Map}
+          options={
+            { headerShown: false }
+          }
+        />
+
+
 </Stack.Navigator>
+
     </NavigationContainer>
+
+  
+   
   );
 }
 

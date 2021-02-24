@@ -1,13 +1,28 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image,Alert} from 'react-native';
 //import Icons from 'react-native-vector-icons/Foundation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
+import {useTheme} from '@react-navigation/native';
 
 
 const settings = ({navigation}) =>{
+    const {colors} = useTheme();
+    const onLogout = () =>{
+        Alert.alert(
+            ' ',
+            'Are you sure want to Logout',
+            [
+              {text: 'LOGOUT'},
+              {text: 'CANCEL', style: 'CANCEL'},
+            ],
+            { 
+              cancelable: false
+            }
+          );
+    }
     return(
-        <View style={{backgroundColor:"#f5fffa"}}>
+        <View >
             <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#f5fffa"}}>
             <View style={{flexDirection:'row'}}>
              <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
@@ -24,7 +39,7 @@ const settings = ({navigation}) =>{
              </View>
 
              <View style={styles.view4}>
-                 <Text onPress={()=>navigation.navigate("Report")}
+                 <Text onPress={()=>navigation.navigate("Feedback")}
                  style={{fontFamily:"OpenSansSemiBold",color:"#696969",
                  paddingLeft:15}}>Report</Text>
              </View>
@@ -48,7 +63,8 @@ const settings = ({navigation}) =>{
              </View>
 
              <View style={styles.view4}>
-                 <Text style={{fontFamily:"OpenSansSemiBold",
+                 <Text onPress={onLogout} 
+                 style={{fontFamily:"OpenSansSemiBold",
                  color:"#696969",paddingLeft:15}}>Logout</Text>
              </View>
              </ScrollView>

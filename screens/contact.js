@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} fr
 //import Icons from 'react-native-vector-icons/Foundation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
+import {useTheme} from '@react-navigation/native';
 
 
 const contact = ({navigation}) =>{
+  
     return(
         <View style={{backgroundColor:"#f5fffa"}}>
             <View style={{flexDirection:'row'}}>
