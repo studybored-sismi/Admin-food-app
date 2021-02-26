@@ -28,7 +28,8 @@ import contact from './screens/contact';
 import Feedback from './screens/Feedback';
 import notification from './screens/notification';
 import Map from './screens/Map';
-
+import Block from './screens/Block';
+import RestDetails from './screens/RestDetails';
 
 
 
@@ -185,6 +186,20 @@ export default function App() {
 
 <Stack.Screen name="Map"
           component={Map}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="Block"
+          component={Block}
+          options={
+            { headerShown: false }
+          }
+        />
+
+<Stack.Screen name="RestDetails"
+          component={RestDetails}
           options={
             { headerShown: false }
           }

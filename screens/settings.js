@@ -23,17 +23,18 @@ const settings = ({navigation}) =>{
     }
     return(
         <View >
-            <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#f5fffa"}}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:"#f5fffa",}}>
             <View style={{flexDirection:'row'}}>
-             <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
+             <Icons name="arrow-back" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
             <Text style={styles.settings}>Settings</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryBoy")}>Back</Text>
+            
              </View>
 
-             <Text style={styles.settings1}>Settings</Text>
+            
+            
 
              <View style={styles.view4}>
-                 <Text 
+                 <Text onPress={()=>navigation.navigate("SubAdmins")}
                  style={{fontFamily:"OpenSansSemiBold",color:"#696969",
                  paddingRight:30}}>Sub Admins</Text>
              </View>
@@ -62,7 +63,7 @@ const settings = ({navigation}) =>{
                  paddingLeft:10}}>Font size</Text>
              </View>
 
-             <View style={styles.view4}>
+             <View style={styles.view5}>
                  <Text onPress={onLogout} 
                  style={{fontFamily:"OpenSansSemiBold",
                  color:"#696969",paddingLeft:15}}>Logout</Text>
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
         marginTop:50,
         color:"#696969",
         fontFamily:"OpenSansSemiBold",
-        fontSize:20
+        fontSize:25,
+        marginBottom:30
     },
     back:{
         fontSize:15,
@@ -101,6 +103,21 @@ const styles = StyleSheet.create({
     },
     view4:{
         marginBottom:30,
+        marginLeft:45,
+        height: 50,
+        width: "75%",
+        backgroundColor: "white",
+        borderRadius: 10,
+        elevation: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        paddingLeft:100,
+        paddingTop:15
+    },
+    view5:{
+        marginBottom:50,
         marginLeft:45,
         height: 50,
         width: "75%",

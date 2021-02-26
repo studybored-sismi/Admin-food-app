@@ -15,9 +15,9 @@ const confScreen = ({navigation}) =>{
 
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{marginBottom:7,flexDirection:'row'}}>
-                <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:50,marginLeft:10}}></Icons>
+               
             <Text style={styles.rest}>Restaurant</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
+           
             </View>
             <ImageBackground source={require('../assets/banner1.jpg')} style={styles.Image2} >
                    
@@ -105,9 +105,9 @@ const styles = StyleSheet.create({
     },
 
     rest:{
-        fontSize:25,
-        marginLeft:75,
-        marginTop:60,
+        fontSize:30,
+        marginLeft:100,
+        marginTop:50,
         marginBottom:10,
         color:"#696969",
         fontFamily:"OpenSansSemiBold"
