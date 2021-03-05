@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import {
     View,
-    StyleSheet,Button,TouchableOpacity,Pressable
+    StyleSheet,Button,TouchableOpacity,Pressable,Text
 } from "react-native";
-import Text from '../components/CustomText'
+//import Text from '../components/CustomText'
 import { connect } from 'react-redux';
 import Icons from 'react-native-vector-icons/Ionicons'
 //import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
@@ -18,28 +18,71 @@ class fontSize extends Component {
     render() {
         return (
             <View style={styles.view4}>
-                <TouchableOpacity onPress={()=>this.props.SmallFontSize()}>
-              <Text>Small</Text></TouchableOpacity>
+                 <Pressable 
+                onPress={() => { this.props.small1FontSize(this.props.fontSize1);
+                    this.props.small2FontSize(this.props.fontSize2);
+                 this.props.smallFontSize(this.props.fontSize)} 
+                  } >
+                   <Text style={{fontSize:this.props.fontSize1}}>Small</Text>
+               </Pressable>
+             
 
-              <TouchableOpacity onPress={()=>this.props.MediumFontSize()}>
-              <Text>Medium</Text></TouchableOpacity>
+               <Pressable 
+                onPress={() => { this.props.medium1FontSize(this.props.fontSize1);
+                    this.props.medium2FontSize(this.props.fontSize2);
+                 this.props.mediumFontSize(this.props.fontSize)} 
+                  } >
+                   <Text style={{fontSize:this.props.fontSize1}}>Medium</Text>
+               </Pressable>
 
-              <TouchableOpacity onPress={()=>this.props.LargeFontSize()}>
-              <Text>Large</Text></TouchableOpacity>
-              
-               
-              </View>
-        )
+               <Pressable 
+                onPress={() => { this.props.large1FontSize(this.props.fontSize1);
+                    this.props.large2FontSize(this.props.fontSize2);
+                 this.props.largeFontSize(this.props.fontSize)} 
+                  } >
+                   <Text style={{fontSize:this.props.fontSize1,margin:10}}>Large</Text>
+               </Pressable>
+            
+             
+
+                <View style={{flexDirection:'row',color:"#FDC913"}}>
+                <View style={{color:"red"}}>
+                <Text style={{fontFamily:"OpenSansBold",color:"#FDC913",marginTop:25,
+            marginLeft:65}}>Cancel</Text>
+            </View>
+                <Text style={{fontFamily:"OpenSansBold",color:"#FDC913",marginTop:25,
+            marginLeft:45}}>OK</Text>
+            </View>   
+            </View>
+        );
     }
 }
-const mapDispatchToProps= (dispatch) =>{
+
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1,fontSize2} = state;
+    return {fontSize,fontSize1,fontSize2};
+};
+
+const mapDispatchToProps = (dispatch) => {
     return {
-        LargeFontSize: () => dispatch ( { type : 'LARGE_FONT_SIZE'}),
-        MediumFontSize: () => dispatch({type:'MEDIUM_FONT_SIZE'}),
-        SmallFontSize: () => dispatch({type: 'SMALL_FONT_SIZE'})
-    }
-}
-export default  connect(null,mapDispatchToProps)(fontSize);
+            largeFontSize: (fontSize) => dispatch(IncreaseFontSize(fontSize)),
+            mediumFontSize: (fontSize) => dispatch(MediumFontSize(fontSize)),
+            smallFontSize:(fontSize) => dispatch(DecreaseFontSize(fontSize)),
+
+            large1FontSize: (fontSize1) => dispatch(LargeFontSize(fontSize1)),
+            medium1FontSize: (fontSize1) => dispatch(Medium1FontSize(fontSize1)),
+            small1FontSize:(fontSize1) => dispatch(SmallFontSize(fontSize1)),
+
+            large2FontSize: (fontSize2) => dispatch(Large2FontSize(fontSize2)),
+            medium2FontSize: (fontSize2) => dispatch(Medium2FontSize(fontSize2)),
+            small2FontSize:(fontSize2) => dispatch(Small2FontSize(fontSize2)),
+       
+
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(fontSize);
+
 const styles = StyleSheet.create({
    
     view4:{

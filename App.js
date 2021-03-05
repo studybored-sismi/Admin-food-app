@@ -62,23 +62,11 @@ import Accounts2 from './screens/Accounts2';
 import Settlementsummary from './screens/Settlementsummary';
 import RestDetails from './screens/RestDetails'
 
-//import { store } from './reduxConfig/store';
+import { store } from './reduxConfig/store';
 import { Provider } from 'react-redux'
-import {createStore} from 'redux'
+//import {createStore} from 'redux'
 
-const reducer = (state=12 , action) => {
-  switch (action.type) {
-    case 'SMALL_FONT_SIZE':
-      return state !== 20 ? state = 10 : state
-    case 'MEDIUM_FONT_SIZE':
-      return state !== 25 ? state = 12 : state
-      case 'LARGE_FONT_SIZE':
-        return state !== 30 ? state =20 : state
-    default:
-      return state
-  }
-}
-const store = createStore(reducer)
+
 const Stack = createStackNavigator();
 export default function App() {
 
