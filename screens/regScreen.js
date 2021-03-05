@@ -4,9 +4,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';;
 import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign'
 import DropDownPicker from 'react-native-dropdown-picker';
+import { connect } from 'react-redux';
 
 
-const regScreen = ({navigation}) =>{
+const regScreen = (props) =>{
     var items
     const [name,setName]= useState();
     const[email,setEmail] = useState();
@@ -23,143 +24,158 @@ const regScreen = ({navigation}) =>{
     
     return(
         
-        <View style={{backgroundColor:"#f5fffa"}}>
-            
+        <View style={{ backgroundColor: "#f5fffa", paddingLeft: 20, paddingRight: 20 }}>
+
 
             <View >
-            <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={{flexDirection:"row"}}>
-            <Text style={styles.res}>Restaurant</Text>
-            <Text style={{marginTop:55,color:"#696969", fontFamily: 'OpenSansRegular'}} onPress={()=>navigation.navigate("restScreen")}>Back</Text>
-            </View>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={{ flexDirection: "row", paddingTop: 40, paddingBottom:20}}>
+                        <Text style={{  marginRight: 100, color: "#696969",fontSize:props.fontSize,
+                            fontFamily: 'OpenSansBold'}}>Add Restaurant</Text>
+                        <Text style={{ marginTop: 10, color: "#696969", fontFamily: 'OpenSansRegular', marginLeft: 15 }}
+                            onPress={() => props.navigation.navigate("restScreen")}>Back</Text>
+                    </View>
 
-            <Text style={{marginLeft:125, fontSize:20,color:"#696969", fontFamily: 'OpenSansBold'}}>Registration</Text>
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }}>Restaurant Name</Text>
+                    <TextInput style={styles.line} value={name} onChangeText={(text) => setName(text)} />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }} >Restaurant Email</Text>
+                    <TextInput style={styles.line} value={email} onChangeText={(text) => setEmail(text)} keyboardType="email-address" />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold',fontSize: props.fontSize1 }}>Restaurant Phone</Text>
+                    <TextInput style={styles.line} value={phone} onChangeText={(text) => setPhone(text)} keyboardType="number-pad" />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold',fontSize: props.fontSize1}}>Restaurant Address</Text>
+                    <TextInput style={styles.line} value={address} onChangeText={(text) => setAddress(text)} />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }}>Basic Delivery Charge</Text>
+                    <TextInput style={styles.line} value={basic} onChangeText={(text) => setBasic(text)} keyboardType="number-pad" />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold', fontSize: props.fontSize1}}>Delivery Charge (Per Km)</Text>
+                    <TextInput style={styles.line} value={charge} onChangeText={(text) => setCharge(text)} keyboardType="number-pad" />
+
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }}>Minimum Order Amount</Text>
+                    <TextInput style={styles.line} value={minimum} onChangeText={(text) => setMinimum(text)} keyboardType="number-pad" />
 
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Name</Text>
-            <TextInput style={styles.line} value={name} onChangeText={(text)=>setName(text)}  />
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={{ marginTop: 20, color: "#696969",
+                        fontSize: props.fontSize1, fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }}>Delivery Mode</Text>
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}} >Restaurant Email</Text>
-            <TextInput style={styles.line} value={email}  onChangeText={(text)=>setEmail(text)} />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Phone</Text>
-            <TextInput style={styles.line} value={phone} onChangeText={(text)=>setPhone(text)} keyboardType="number-pad" />
+                    </View>
+                    <DropDownPicker
+                        items={[
+                            { label: 'Delivery', value: 'Delivery' },
+                            { label: 'Self pickup', value: 'Self pickup' },
+                            { label: 'Both', value: 'Both' },
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Restaurant Address</Text>
-            <TextInput style={styles.line} value={address} onChangeText={(text)=>setAddress(text)}  />
+                        ]}
+                        defaultValue={items}
+                        containerStyle={{ height: 50 }}
+                        placeholder="Select a mode"
+                        style={styles.drop}
+                        globalTextStyle={{ fontFamily: "OpenSansRegular" }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                        onChangeItem={(item) => setItem(item.value)}
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Basic Delivery Charge</Text>
-            <TextInput style={styles.line} value={basic} onChangeText={(text)=>setBasic(text)} keyboardType="number-pad" />
+                    />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Delivery Charge (Per Km)</Text>
-            <TextInput style={styles.line} value={charge} onChangeText={(text)=>setCharge(text)} keyboardType="number-pad" />
 
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Minimum Order Amount</Text>
-            <TextInput style={styles.line} value={minimum} onChangeText={(text)=>setMinimum(text)} keyboardType="number-pad" />
 
-            <View style={{flexDirection:'row'}}>
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Delivery Mode</Text>
+                    <Text style={{ marginTop: 20, color: "#696969", fontFamily: 'OpenSansBold',
+                    fontSize: props.fontSize1 }}>Liscence Number</Text>
+                    <TextInput style={styles.line} value={licence} 
+                    onChangeText={(text) => setLicence(text)} keyboardType="number-pad" placeholder="" />
 
-            
-            </View>
-            <DropDownPicker style={{marginRight:25,marginLeft:45}}
-                    items={[
-                        { label: 'Delivery', value: 'Delivery' },
-                        { label: 'Self pickup', value: 'Self pickup' },
-                        { label: 'Both', value: 'Both' },
-                        
-                    ]}
-                    defaultValue={items}
-                    containerStyle={{ height: 50 }}
-                    placeholder="Select a mode"
-                    style={styles.drop}
-                    globalTextStyle={{fontFamily:"OpenSansRegular"}}
-                    itemStyle={{
-                        justifyContent: 'flex-start'
-                    }}
-                    dropDownStyle={{ backgroundColor: '#fafafa' }}
-                    onChangeItem={(item)=>setItem(item.value)}
-                    
-                />
-           
-           
-        
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Licence Number</Text>
-            <TextInput style={styles.line} value={licence}  onChangeText={(text)=>setLicence(text)} keyboardType="number-pad" placeholder="" />
-            
-            <Text style={{marginLeft:35,marginTop:20,color:"#696969", fontFamily: 'OpenSansBold',}}>Category</Text>
+                    <Text style={{ marginTop: 20, color: "#696969", 
+                    fontFamily: 'OpenSansBold', fontSize: props.fontSize1 }}>Category</Text>
 
-          
-        
 
-            <View style={styles.categ}>
-                <View style={{flexDirection:'row', }}>
-            <Text style={{marginRight:134,fontFamily:"OpenSansRegular"}}>Asian</Text>
-                    <CheckBox value={asianSelect}
-                    onValueChange={setAsianSelect}
-                    style={{marginLeft:10}}>
 
-                    </CheckBox>
+
+                    <View style={styles.categ}>
+                        <View style={{ flexDirection: 'row', }}>
+                            <Text style={{ marginRight: 133, 
+                                fontSize: props.fontSize1,fontFamily: "OpenSansRegular" }}>Asian</Text>
+                            <CheckBox value={asianSelect}
+                                onValueChange={setAsianSelect}
+                                style={{ marginLeft: 10 }}>
+
+                            </CheckBox>
+                        </View>
+
+
+                        <View style={{ flexDirection: 'row', }}>
+                            <Text style={{ marginRight: 129, fontSize: props.fontSize1,fontFamily: "OpenSansRegular" }}>Italian</Text>
+                            <CheckBox value={italianselect}
+                                onValueChange={setItalianSelect}
+                                style={{ marginLeft: 10 }}>
+
+                            </CheckBox></View>
+                        <View style={{ flexDirection: 'row', }}>
+
+                            <Text style={{ marginRight: 86,fontSize: props.fontSize1, fontFamily: "OpenSansRegular" }}>North Indian</Text>
+
+
+                            <CheckBox
+
+                                value={northselect}
+                                onValueChange={setNorthSelect}
+                                style={{ marginLeft: 10 }}
+
+
+                            >
+
+                            </CheckBox></View>
+
                     </View>
 
 
-                    <View style={{flexDirection:'row', }}>
-                    <Text style={{marginRight:129,fontFamily:"OpenSansRegular"}}>Italian</Text>
-                    <CheckBox value={italianselect}
-                    onValueChange={setItalianSelect}
-                    style={{marginLeft:10}}
-                    >
+                    <TouchableOpacity style={{ width: "100%", }} onPress={() => props.navigation.navigate("restScreen")}>
+                        <Text style={{
+                            backgroundColor: "#FDC913", marginLeft: 45, fontSize: 20, marginBottom: 40,
+                            color: "white", height: "30%", paddingTop: 10,paddingLeft:20,paddingRight:20,
+                            paddingBottom:10,alignSelf:'center', borderRadius: 20, width: 115, fontFamily: "OpenSansBold"
+                        }}>Submit</Text>
+                    </TouchableOpacity>
 
-                    </CheckBox></View>
-                <View style={{flexDirection:'row', }}>
-
-                    <Text style={{marginRight:86,fontFamily:"OpenSansRegular"}}>North Indian</Text>
-
-
-                    <CheckBox value={northselect}
-                    onValueChange={setNorthSelect}
-                    style={{marginLeft:10}}
-                    >
-
-                    </CheckBox></View>
-
-                </View>
-
-            
- <TouchableOpacity style={{width:"100%",}} onPress={()=>navigation.navigate("tabScreen")} >
-            <Text style={{backgroundColor:"#FDC913", marginLeft:45,fontSize:15,fontWeight:"bold",marginBottom:40,
-            color:"white",height:"30%",paddingTop:10,paddingLeft:110,borderRadius:20,width:"75%",paddingRight:40,fontFamily:"OpenSansBold"}}>Submit</Text>
-            </TouchableOpacity>
-           
-            </ScrollView>
+                </ScrollView>
             </View>
         </View>
-       
+
     )
 }
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
 
-export default regScreen;
+
+export default connect(mapStateToProps)(regScreen);
 
 const styles = StyleSheet.create({
     root: {
-      flex: 1,
-      flexDirection:'row'
+        flex: 1,
+        flexDirection: 'row'
     },
- 
-    res:{
-        marginLeft:130,
-        marginRight:70,
-        fontSize:20,
-        marginTop:60,
-        color:"#696969",
-        fontFamily: 'OpenSansBold'
+
+    res: {
+        // marginLeft:20,
+        marginRight: 100,
         
+        color: "#696969",
+        fontFamily: 'OpenSansBold'
+
 
     },
-    categ:{
-        paddingLeft:25,
-        paddingTop:15,
-        marginBottom:20,
+    categ: {
+        paddingLeft: 25,
+        paddingTop: 15,
+        marginBottom: 20,
         height: 130,
         width: "70%",
         backgroundColor: "white",
@@ -169,8 +185,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.5,
         shadowRadius: 5,
-        marginLeft:55,
-        marginTop:20
+        marginLeft: 55,
+        marginTop: 20
     },
     line: {
         borderBottomWidth: 1,
@@ -179,17 +195,17 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         // paddingBottom:20
         flexDirection: 'row',
-        marginLeft:35,
-        marginRight:35,
-        fontFamily:"OpenSansRegular",
-        color:"#696969"
+        // marginLeft:35,
+        // marginRight:35,
+        fontFamily: "OpenSansRegular",
+        color: "#696969"
 
     },
-    drop:{
+    drop: {
         backgroundColor: '#fafafa',
-        marginLeft:32,
-        marginTop:15,
-        marginRight:32
+        // marginLeft:32,
+        marginTop: 15,
+        // marginRight:32
         //fontFamily: 'OpenSansRegular' 
     }
 })

@@ -6,34 +6,39 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTheme} from '@react-navigation/native';
+import { connect } from 'react-redux';
 
 
-const Feedback = ({navigation}) =>{
+const Feedback = (props) =>{
     
     return(
-        <View style={{backgroundColor:"#f5fffa"}}>
+        <View style={{backgroundColor:"#f5fffa",paddingBottom:200}}>
             <View style={{flexDirection:'row'}}>
-             <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
-            <Text style={styles.report}>Report</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryBoy")}>Back</Text>
+             <Icon name="arrow-back" onPress={()=>props.navigation.navigate("settings")} color="#FDC913"
+              size={35} style={{marginTop:40,marginLeft:25}}></Icon>
+            <Text style={{  marginLeft:85,marginTop:35,color:"#696969",fontSize:props.fontSize,
+                fontFamily:"OpenSansSemiBold",marginBottom:40}}>Report</Text>
+            {/* <Text style={styles.back} >Back</Text> */}
              </View>
              <View style={styles.view3}>
             <View style={{flexDirection:"row"}}>
             
           
-            <Text onPress={()=>navigation.navigate("notification")}
+            <Text onPress={()=>props.navigation.navigate("notification")}
             style={{marginLeft:25, marginTop:20, marginRight:32,fontSize:16,
                 color:"#696969",fontFamily: 'OpenSansRegular'}}>Notifications </Text>
          <Text style={styles.reg}>Feedback</Text>
+        
             </View>
 
             <View style={{flexDirection:'row'}}>
             <Icon1 name="dot-single" size={30} color="#696969" style={{marginLeft:25}}></Icon1>
-            <Text style={{marginTop:5,fontFamily:"OpenSansRegular",color:"#696969"}}>Customer Feedback</Text>
+            <Text style={{marginTop:5,fontFamily:"OpenSansRegular",
+            fontSize:props.fontSize1,color:"#696969"}}>Customer Feedback</Text>
             </View>
 
             <View style={{flexDirection:'row'}}>
-            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
+            <TouchableOpacity  onPress={()=>props.navigation.navigate("settings")}>
             <Text style={{backgroundColor:"#FDC913",marginTop:10,marginLeft:45,
             color:"white",height:38,paddingTop:10,
             paddingLeft:25,borderRadius:20,width:"65%",paddingRight:25,fontFamily: 'OpenSansBold'}}>View</Text>
@@ -41,7 +46,7 @@ const Feedback = ({navigation}) =>{
 
             
 
-            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
+            <TouchableOpacity  onPress={()=>props.navigation.navigate("settings")}>
             <Text style={{backgroundColor:"#FDC913",marginTop:10,marginLeft:45,
             color:"white",height:38,paddingTop:10,
             paddingLeft:24,borderRadius:20,width:"66%",paddingRight:24,fontFamily: 'OpenSansBold'}}>Reply</Text>
@@ -52,12 +57,12 @@ const Feedback = ({navigation}) =>{
             <Icon1 name="dot-single" size={30} color="#696969"
             style={{marginLeft:25,marginTop:10}} ></Icon1>
             <Text 
-            style={{marginTop:15,fontFamily:"OpenSansRegular",
+            style={{marginTop:15,fontFamily:"OpenSansRegular",fontSize:props.fontSize1,
             color:"#696969"}}>Customer Complaints</Text>
             </View>
      
             <View style={{flexDirection:'row'}}>
-            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
+            <TouchableOpacity  onPress={()=>props.navigation.navigate("settings")}>
             <Text style={{backgroundColor:"#FDC913",marginTop:10,marginLeft:45,
             color:"white",height:38,paddingTop:10,
             paddingLeft:25,borderRadius:20,width:"65%",paddingRight:25,fontFamily: 'OpenSansBold'}}>View</Text>
@@ -65,7 +70,7 @@ const Feedback = ({navigation}) =>{
 
             
 
-            <TouchableOpacity  onPress={()=>navigation.navigate("settings")}>
+            <TouchableOpacity  onPress={()=>props.navigation.navigate("settings")}>
             <Text style={{backgroundColor:"#FDC913",marginTop:10,marginLeft:45,
             color:"white",height:38,paddingTop:10,
             paddingLeft:24,borderRadius:20,width:"66%",paddingRight:24,fontFamily: 'OpenSansBold'}}>Reply</Text>
@@ -78,17 +83,24 @@ const Feedback = ({navigation}) =>{
     )
 
 }
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
 
 
-export default Feedback;
+export default connect(mapStateToProps)(Feedback);
+
+
+
 
 const styles = StyleSheet.create({
     report:{
         marginLeft:95,
-        marginTop:50,
+        marginTop:35,
         color:"#696969",
         fontFamily:"OpenSansSemiBold",
-        fontSize:20,
+     
         marginBottom:40
     },
     back:{

@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground} from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { connect } from 'react-redux';
 const confScreen = ({navigation}) =>{
     const [time,setTime]= useState();
     const [minTime,setMintime]= useState();
@@ -85,7 +85,7 @@ const confScreen = ({navigation}) =>{
             </View>
             </View>
             <TouchableOpacity   onPress={()=>navigation.navigate("detailScreen")}>
-            <Text style={{backgroundColor:"#FDC913", marginLeft:100,fontSize:15,fontWeight:'bold',
+            <Text style={{backgroundColor:"#FDC913", marginLeft:100,fontSize:15,
             color:"white",height:"38%",paddingTop:7,paddingLeft:50,borderRadius:20,width:"40%",paddingRight:40,fontFamily:"OpenSansBold"}}>Save</Text>
             </TouchableOpacity>
             </View>
@@ -96,7 +96,13 @@ const confScreen = ({navigation}) =>{
     )
 }
 
-export default confScreen;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(confScreen);
 
 const styles = StyleSheet.create({
     root: {

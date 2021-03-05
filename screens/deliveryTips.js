@@ -4,24 +4,27 @@ import { StyleSheet, Text, View, ScrollView, TextInput, ImageBackground, Image }
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@react-navigation/native';
+import { connect } from 'react-redux';
 
-const deliveryTips = ({ navigation }) => {
+const deliveryTips = (props) => {
 
     return (
         <View style={{ backgroundColor: "#f5fffa",paddingBottom:0 }}>
             <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "#f5fffa" }}>
                 <View style={{ backgroundColor: "#f5fffa" }}>
                     <View style={{ flexDirection: "row" }}>
-                        <Icons name="arrow-back" onPress={()=>navigation.navigate("deliveryBoy")} color="#FDC913" size={35} style={{ marginTop: 40, marginLeft: 10 }}></Icons>
-                        <Text style={styles.Tips1}>
+                        <Icons name="arrow-back" onPress={()=>props.navigation.navigate("deliveryBoy")} color="#FDC913" size={35} style={{ marginTop: 40, marginLeft: 10 }}></Icons>
+                        <Text style={{ marginLeft: 75,marginTop: 50,color: "#696969",
+                        fontFamily: "OpenSansSemiBold",fontSize:props.fontSize1}}>
                             Delivery Tip
                         </Text>
                     </View>
 
                     <View style={styles.view3}>
-                        <Text style={styles.Tips2}>Delivery Tip</Text>
+                        <Text style={{fontSize:props.fontSize,color: "#696969",fontFamily: "OpenSansBold",
+        marginTop: 10,marginLeft: 15}}>Delivery Tip</Text>
                         <TextInput style={styles.input} keyboardType='default'></TextInput>
-                        <TouchableOpacity onPress={() => navigation.navigate("deliveryBoy")}>
+                        <TouchableOpacity onPress={() => props.navigation.navigate("deliveryBoy")}>
                             <Text style={{
                                 backgroundColor: "#FDC913", color: "white", height: 38, paddingTop: 10, paddingLeft: 42, marginLeft: 110,
                                 borderRadius: 20, width: "35%", paddingRight: 40, fontFamily: 'OpenSansBold',
@@ -36,8 +39,14 @@ const deliveryTips = ({ navigation }) => {
         </View>
     )
 }
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
 
-export default deliveryTips;
+
+export default connect(mapStateToProps)(deliveryTips);
+
 
 
 const styles = StyleSheet.create({

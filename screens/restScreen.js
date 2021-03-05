@@ -6,9 +6,10 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Entypo';
 import { DrawerActions } from '@react-navigation/native';
+import { connect } from 'react-redux';
 
 
-const restScreen = ({ navigation }) => {
+const restScreen = (props) => {
 
     const onDelete = () => {
         Alert.alert(
@@ -31,16 +32,20 @@ const restScreen = ({ navigation }) => {
             <View>
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <View style={{ marginBottom: 40, flexDirection: 'row', justifyContent: 'space-between',
-                     paddingTop: 40, marginLeft: 20, marginRight: 20 }} >
-                        <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
+                    <View style={{
+                        marginBottom: 40, flexDirection: 'row', justifyContent: 'space-between',
+                        paddingTop: 40, marginLeft: 20, marginRight: 20
+                    }} >
+                        <TouchableOpacity onPress={() => props.navigation.navigate("Dashboard")}>
                             <Icons name="arrow-back"
                                 color="#FDC913" size={30} style={{ paddingTop: 5 }} ></Icons>
                         </TouchableOpacity>
-                        <Text style={styles.rest}>Restaurant</Text>
-                        <TouchableOpacity style={{ paddingTop: 5 }} onPress={() => navigation.navigate("regScreen")}>
+                        <Text style={{fontSize:props.fontSize,   marginLeft: 20,color: "#696969",
+                                    fontFamily: 'OpenSansBold',}}>Restaurant</Text>
+
+                        <TouchableOpacity style={{ paddingTop: 5 }} onPress={() =>props.navigation.navigate("regScreen")}>
                             <Text style={{
-                                backgroundColor: "#FDC913",
+                                backgroundColor: "#FDC913",fontSize:props.fontSize1,
                                 color: "white", height: 38, paddingTop: 10, paddingLeft: 20, paddingRight: 20, paddingBottom: 10, borderRadius: 20, width: "100%", fontFamily: 'OpenSansBold'
                             }}>Add</Text>
                         </TouchableOpacity>
@@ -53,17 +58,17 @@ const restScreen = ({ navigation }) => {
 
 
                             <View style={{ flexDirection: 'column' }}>
-                                <TouchableOpacity  onPress={()=>navigation.navigate("Block")} >
-                                <Text  style={{
-                                    marginLeft: 25, marginTop: 10,
-                                    color: "#696969", fontFamily: 'OpenSansRegular'
-                                }}>Blocked </Text>
-                                <Text style={{
-                                    marginLeft: 25, color: "#696969",
-                                    fontFamily: 'OpenSansRegular'
-                                }}>Restaurant</Text>
+                                <TouchableOpacity onPress={() => props.navigation.navigate("Block")} >
+                                    <Text style={{
+                                        marginLeft: 25, marginTop: 10,
+                                        color: "#696969", fontFamily: 'OpenSansSemiBold'
+                                    }}>Blocked </Text>
+                                    <Text style={{
+                                        marginLeft: 25, color: "#696969",
+                                        fontFamily: 'OpenSansSemiBold'
+                                    }}>Restaurant</Text>
                                 </TouchableOpacity>
-                                </View>
+                            </View>
                         </View>
 
 
@@ -71,17 +76,24 @@ const restScreen = ({ navigation }) => {
 
                             <TouchableOpacity>
 
-                                <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>
+                                <Text style={{ marginBottom: 10, color: "#696969",
+                                fontSize:props.fontSize1, fontFamily: 'OpenSansRegular' }} 
+                                onPress={() => props.navigation.navigate("tabScreen")}>
                                     ID</Text>
                             </TouchableOpacity>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
                                     <TouchableOpacity>
-                                        <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>Restaurant</Text>
-                                        <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>Name</Text>
+                                        <Text style={{ color: "#696969", marginRight: 80, 
+                                        fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}
+                                         onPress={() => props.navigation.navigate("tabScreen")}>Restaurant</Text>
+                                        <Text style={{ marginLeft: 10, color: "#696969",
+                                        fontSize:props.fontSize1, fontFamily: 'OpenSansRegular' }}
+                                         onPress={() => props.navigation.navigate("tabScreen")}>Name</Text>
                                     </TouchableOpacity>
                                 </View>
-                                <Icon1 name="pencil" size={20} style={{ marginRight: 10 }} onPress={() => navigation.navigate("EditScreen")}></Icon1>
+                                <Icon1 name="pencil" size={20} style={{ marginRight: 10 }}
+                                 onPress={() => props.navigation.navigate("EditScreen")}></Icon1>
                                 <Icon name="delete" size={20} onPress={onDelete}></Icon>
                             </View>
 
@@ -93,12 +105,16 @@ const restScreen = ({ navigation }) => {
                         <View style={styles.view1}>
 
 
-                            <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>ID</Text>
+                            <Text style={{ marginBottom: 10, color: "#696969", 
+                            fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}>ID</Text>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
-                                    <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
-                                    <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text></View>
-                                <Icon1 name="pencil" size={20} style={{ marginRight: 10 }} onPress={() => navigation.navigate("EditScreen")}></Icon1>
+                                    <Text style={{ color: "#696969", marginRight: 80, 
+                                    fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
+                                    <Text style={{ marginLeft: 10, color: "#696969",
+                                    fontSize:props.fontSize1, fontFamily: 'OpenSansRegular' }}>Name</Text></View>
+                                <Icon1 name="pencil" size={20} style={{ marginRight: 10 }}
+                                 onPress={() => props.navigation.navigate("EditScreen")}></Icon1>
                                 <Icon name="delete" size={20} onPress={onDelete}></Icon>
                             </View>
 
@@ -108,12 +124,15 @@ const restScreen = ({ navigation }) => {
                         <View style={styles.view1}>
 
 
-                            <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>ID</Text>
+                            <Text style={{ marginBottom: 10, color: "#696969", 
+                            fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}>ID</Text>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
-                                    <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
-                                    <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text></View>
-                                <Icon1 name="pencil" onPress={() => navigation.navigate("EditScreen")} size={20} style={{ marginRight: 10 }}></Icon1>
+                                    <Text style={{ color: "#696969", marginRight: 80,
+                                    fontSize:props.fontSize1, fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
+                                    <Text style={{ marginLeft: 10, color: "#696969", 
+                                    fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}>Name</Text></View>
+                                <Icon1 name="pencil" onPress={() => props.navigation.navigate("EditScreen")} size={20} style={{ marginRight: 10 }}></Icon1>
                                 <Icon name="delete" size={20} onPress={onDelete}></Icon>
                             </View>
 
@@ -133,7 +152,13 @@ const restScreen = ({ navigation }) => {
     )
 }
 
-export default restScreen;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(restScreen);
 
 
 const styles = StyleSheet.create({
@@ -145,8 +170,7 @@ const styles = StyleSheet.create({
     rest: {
         fontSize: 30,
         marginLeft: 20,
-        // marginRight:10,
-        // marginTop: 60,
+       
         color: "#696969",
         fontFamily: 'OpenSansBold',
     },
@@ -198,7 +222,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         marginBottom: 50,
         color: "#696969",
-        fontFamily: 'OpenSansRegular'
+        fontFamily: 'OpenSansSemiBold'
 
     },
     view3: {

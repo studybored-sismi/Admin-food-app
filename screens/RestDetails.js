@@ -4,7 +4,9 @@ import { StyleSheet, Text, View, ScrollView, TextInput, ImageBackground, Image }
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
 
-const RestDetails = ({ navigation }) => {
+import { connect } from 'react-redux';
+
+const RestDetails = (props) => {
     const [name, setName] = useState();
     const [address, setAddress] = useState();
     const [phone, setPhone] = useState();
@@ -28,7 +30,8 @@ const RestDetails = ({ navigation }) => {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{ marginBottom: 7, paddingTop: 40, flexDirection: 'row' }}>
                         <Icons name="arrow-back" onPress={() => navigation.navigate("restScreen")} color="#FDC913" size={35} style={{ marginLeft: 10 }}></Icons>
-                        <Text style={styles.rest}>Restaurant</Text>
+                        <Text style={{fontSize:props.fontSize,  marginLeft: 60,marginBottom: 20,
+        color: "#696969",marginTop:1,fontFamily: "OpenSansSemiBold"}}>Restaurant</Text>
 
                     </View>
 
@@ -36,31 +39,36 @@ const RestDetails = ({ navigation }) => {
 
                         <View style={styles.view3}>
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 20, marginLeft: 20, marginBottom: 10, marginRight: 115, color: "#696969", fontFamily: "OpenSansRegular" }}>Name</Text>
+                                <Text style={{ marginTop: 20, marginLeft: 20, marginBottom: 10, marginRight: 115,fontSize:props.fontSize1, 
+                                     color: "#696969", fontFamily: "OpenSansRegular" }}>Name</Text>
                                 <Text style={{ marginTop: 25, color: "#696969", fontFamily: "OpenSansRegular" }}>:</Text>
                                 <TextInput style={{ marginTop: 18, marginLeft: 5, color: "#696969", fontFamily: "OpenSansRegular", fontSize: 10 }} value={name} onChangeText={(text) => setName(text)} />
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 100, color: "#696969", fontFamily: "OpenSansRegular" }}>Address</Text>
+                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 100,
+                                    fontSize:props.fontSize1, color: "#696969", fontFamily: "OpenSansRegular" }}>Address</Text>
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
                                 <TextInput style={styles.input2} value={address} onChangeText={(text) => setAddress(text)} />
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 111, color: "#696969", fontFamily: "OpenSansRegular" }}>Phone</Text>
+                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10,
+                                    fontSize:props.fontSize1, marginRight: 111, color: "#696969", fontFamily: "OpenSansRegular" }}>Phone</Text>
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
                                 <TextInput style={styles.input2} value={phone} onChangeText={(text) => setPhone(text)} keyboardType="number-pad" />
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 117, color: "#696969", fontFamily: "OpenSansRegular" }}>Email</Text>
+                                <Text style={{ marginTop: 5, marginLeft: 20, 
+                                    fontSize:props.fontSize1,marginBottom: 10, marginRight: 117, color: "#696969", fontFamily: "OpenSansRegular" }}>Email</Text>
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
                                 <TextInput style={styles.input2} value={email} onChangeText={(text) => setEmail(text)} keyboardType="email-address" />
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 16, color: "#696969", fontFamily: "OpenSansRegular" }}>Basic delivery charge</Text>
+                                <Text style={{ marginTop: 5, marginLeft: 20, fontSize:props.fontSize1,
+                                    marginBottom: 10, marginRight: 16, color: "#696969", fontFamily: "OpenSansRegular" }}>Basic delivery charge</Text>
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
                                 <TextInput style={styles.input2} value={basicCharge} onChangeText={(text) => setBasicCharge(text)} keyboardType="number-pad" />
                             </View>
@@ -75,19 +83,25 @@ const RestDetails = ({ navigation }) => {
                             </View>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 58, color: "#696969", fontFamily: "OpenSansRegular" }}>Delivery Mode</Text>
+                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10,
+                                    fontSize:props.fontSize1, marginRight: 58, color: "#696969", 
+                                    fontSize:props.fontSize1,fontFamily: "OpenSansRegular" }}>Delivery Mode</Text>
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
                                 <TextInput style={styles.input2} value={deliveryMode} onChangeText={(text) => setDeliveryMode(text)}></TextInput>
                             </View>
 
 
                             <View style={{ flexDirection: 'column' }}>
-                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, marginRight: 62, color: "#696969", fontFamily: "OpenSansRegular" }}>Admin Delivery</Text></View>
+                                <Text style={{ marginTop: 5, marginLeft: 20, marginBottom: 10, 
+                                    fontSize:props.fontSize1,marginRight: 62, color: "#696969",
+                                    fontSize:props.fontSize1, fontFamily: "OpenSansRegular" }}>Admin Delivery</Text></View>
                             <View style={{ flexDirection: 'row' }}>
-                                <Text style={{ marginTop: 1, marginLeft: 20, marginBottom: 10, marginRight: 70, color: "#696969", fontFamily: "OpenSansRegular" }}>Commission</Text>
+                                <Text style={{ marginTop: 1, marginLeft: 20, marginBottom: 10, marginRight: 70, 
+                                    color: "#696969", fontFamily: "OpenSansRegular",fontSize:props.fontSize1, }}>Commission</Text>
 
                                 <Text style={{ color: "#696969", fontFamily: "OpenSansRegular", marginTop: 5 }}>:</Text>
-                                <TextInput style={styles.input2} value={adminDelivery} onChangeText={(text) => setAdminDelivery(text)} keyboardType="number-pad" />
+                                <TextInput style={styles.input2} value={adminDelivery} 
+                                onChangeText={(text) => setAdminDelivery(text)} keyboardType="number-pad" />
 
                             </View>
 
@@ -145,9 +159,15 @@ const RestDetails = ({ navigation }) => {
         </View>
     )
 }
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
 
 
-export default RestDetails;
+export default connect(mapStateToProps)(RestDetails);
+
+
 
 const styles = StyleSheet.create({
 

@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, ImageBackground,Image} from 'react-native';
 import {Button} from 'react-native-paper';
 import Icons from 'react-native-vector-icons/Ionicons';
-
+import { connect } from 'react-redux';
 const foodScreen = ({navigation}) =>{
     return(
         <View style={{backgroundColor:"#f5fffa"}}>
@@ -95,7 +95,14 @@ const foodScreen = ({navigation}) =>{
     )
 }
 
-export default foodScreen;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(foodScreen);
+
 
 const styles = StyleSheet.create({
     root: {

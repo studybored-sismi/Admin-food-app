@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput, ImageBackground} from 'r
 import {Button} from 'react-native-paper';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { connect } from 'react-redux';
 const reviewScreen = ({navigation}) =>{
     return(
         <View style={{backgroundColor:"#f5fffa"}}>
@@ -51,7 +51,14 @@ const reviewScreen = ({navigation}) =>{
     )
 }
 
-export default reviewScreen;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(reviewScreen);
+
 
 const styles = StyleSheet.create({
     root: {

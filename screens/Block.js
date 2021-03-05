@@ -3,14 +3,12 @@ import { StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTheme } from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/AntDesign';
-import Icon1 from 'react-native-vector-icons/Entypo';
-import { DrawerActions } from '@react-navigation/native';
+
+import { connect } from 'react-redux';
+import fontSize from './fontSize';
 
 
-const Block = ({ navigation }) => {
-
-
+const Block = (props) => {
 
     return (
 
@@ -19,40 +17,46 @@ const Block = ({ navigation }) => {
             <View>
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <View style={{ marginBottom: 40, flexDirection: 'row', justifyContent: 'space-between', 
-                    paddingTop: 40, marginLeft: 20, marginRight: 100 }} >
-                        <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
+                    <View style={{
+                        marginBottom: 40, flexDirection: 'row', justifyContent: 'space-between',
+                        paddingTop: 40, marginLeft: 20, marginRight: 100
+                    }} >
+                        <TouchableOpacity onPress={() => props.navigation.navigate("restScreen")}>
                             <Icons name="arrow-back"
                                 color="#FDC913" size={30} style={{ paddingTop: 5 }} ></Icons>
                         </TouchableOpacity>
-                        <Text style={styles.rest}>Restaurant</Text>
-                     
+                        <Text style={{fontSize:props.fontSize , color: "#696969",
+                         fontFamily: 'OpenSansBold',}}>Restaurant</Text>
+
 
                     </View>
 
                     <View style={styles.view3}>
                         <View style={{ flexDirection: "row" }}>
-                            <View style={{flexDirection:'column',marginRight:54}}>
-                                <TouchableOpacity onPress={() =>navigation.navigate("restScreen")}>
-                            <Text style={{
-                                    marginLeft: 25, marginTop: 10,fontSize:15,
-                                    color: "#696969", fontFamily: 'OpenSansRegular'
-                                }}>Registered</Text>
-                                <Text style={{
-                                    marginLeft: 25, marginTop: 2,fontSize:15,
-                                    color: "#696969", fontFamily: 'OpenSansRegular'
-                                }}>Restaurant</Text>
+                            <View style={{ flexDirection: 'column', marginRight: 54 }}>
+                                <TouchableOpacity  onPress={() =>props.navigation.navigate("restScreen")}>
+                                    <Text style={{
+                                        marginLeft: 25, marginTop: 10, fontSize: 15,
+                                        color: "#696969", fontFamily: 'OpenSansSemiBold'
+                                    }}>Registered</Text>
+                                    <Text style={{
+                                        marginLeft: 25, marginTop: 2, fontSize: 15,
+                                        color: "#696969", fontFamily: 'OpenSansSemiBold'
+                                    }}>Restaurant</Text>
                                 </TouchableOpacity>
-                                </View>
+                            </View>
                             <View style={styles.reg}>
+                                <TouchableOpacity  onPress={() =>navigation.navigate("Block")}>
                                 <Text style={{
                                     marginLeft: 25, marginTop: 10,
-                                    color: "#696969", fontFamily: 'OpenSansRegular'
+                                    color: "#696969", fontFamily: 'OpenSansSemiBold'
                                 }}>Blocked </Text>
                                 <Text style={{
                                     marginLeft: 25, color: "#696969",
-                                    fontFamily: 'OpenSansRegular'
-                                }}>Restaurant</Text></View>
+                                    fontFamily: 'OpenSansSemiBold'
+                                }}>Restaurant</Text>
+                                </TouchableOpacity>
+                                </View>
                         </View>
 
 
@@ -60,17 +64,19 @@ const Block = ({ navigation }) => {
 
                             <TouchableOpacity>
 
-                                <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>
+                                <Text style={{ marginBottom: 10,fontSize:props.fontSize1, color: "#696969", fontFamily: 'OpenSansRegular' }} 
+                                onPress={() => props.navigation.navigate("RestDetails")}>
                                     ID</Text>
                             </TouchableOpacity>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
                                     <TouchableOpacity>
-                                        <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>Restaurant</Text>
-                                        <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("tabScreen")}>Name</Text>
+                                        <Text style={{ color: "#696969", marginRight: 80,fontSize:props.fontSize1, fontFamily: 'OpenSansRegular' }}
+                                         onPress={() => props.navigation.navigate("RestDetails")}>Restaurant Name</Text>
+                                        {/* <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }} onPress={() => navigation.navigate("RestDetails")}>Name</Text> */}
                                     </TouchableOpacity>
                                 </View>
-                             
+
                             </View>
 
 
@@ -81,12 +87,15 @@ const Block = ({ navigation }) => {
                         <View style={styles.view1}>
 
 
-                            <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>ID</Text>
+                            <Text style={{ marginBottom: 10, color: "#696969", fontSize:props.fontSize1,
+                            fontFamily: 'OpenSansRegular' }}>ID</Text>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
-                                    <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
-                                    <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text></View>
-                              
+                                    <Text style={{ color: "#696969", marginRight: 80,fontSize:props.fontSize1, 
+                                    fontFamily: 'OpenSansRegular' }}>Restaurant Name</Text>
+                                     {/* <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text> */}
+                                    </View> 
+
                             </View>
 
 
@@ -95,12 +104,15 @@ const Block = ({ navigation }) => {
                         <View style={styles.view1}>
 
 
-                            <Text style={{ marginBottom: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>ID</Text>
+                            <Text style={{ marginBottom: 10, color: "#696969", 
+                            fontSize:props.fontSize1,fontFamily: 'OpenSansRegular' }}>ID</Text>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ flexDirection: 'column' }}>
-                                    <Text style={{ color: "#696969", marginRight: 80, fontFamily: 'OpenSansRegular' }}>Restaurant</Text>
-                                    <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text></View>
-                               
+                                    <Text style={{ color: "#696969",fontSize:props.fontSize1,
+                                     marginRight: 80, fontFamily: 'OpenSansRegular' }}>Restaurant Name</Text>
+                                    {/* <Text style={{ marginLeft: 10, color: "#696969", fontFamily: 'OpenSansRegular' }}>Name</Text> */}
+                                    </View>
+
                             </View>
 
 
@@ -119,7 +131,13 @@ const Block = ({ navigation }) => {
     )
 }
 
-export default Block;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(Block);
 
 
 const styles = StyleSheet.create({

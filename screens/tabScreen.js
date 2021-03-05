@@ -1,10 +1,6 @@
-
-
 import React from 'react';
 import {  View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-
 
 import detailScreen from './detailScreen';
 import foodScreen from './foodScreen';
@@ -68,4 +64,3 @@ export default function tabScreen() {
         </Tab.Navigator>
     )
 }
-

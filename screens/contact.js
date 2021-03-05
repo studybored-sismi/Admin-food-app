@@ -4,34 +4,53 @@ import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} fr
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {useTheme} from '@react-navigation/native';
+import { connect } from 'react-redux';
+import fontSize from './fontSize';
 
 
-const contact = ({navigation}) =>{
+const contact = (props) =>{
   
     return(
-        <View style={{backgroundColor:"#f5fffa"}}>
+        <View style={{backgroundColor:"#f5fffa",paddingBottom:200}}>
             <View style={{flexDirection:'row'}}>
-             <Icons name="ios-menu" color="#FDC913" size={35} style={{marginTop:40,marginLeft:10}}></Icons>
-            <Text style={styles.contact}>Contact</Text>
-            <Text style={styles.back} onPress={()=>navigation.navigate("deliveryBoy")}>Back</Text>
+             <Icons name="arrow-back" onPress={()=>navigation.navigate("settings")} color="#FDC913" size={35} style={{marginTop:40,marginLeft:15}}></Icons>
+            <Text style={{fontSize:props.fontSize, marginLeft:95,
+                 marginTop:35, color:"#696969",fontFamily:"OpenSansSemiBold",}}>Contact</Text>
+            {/* <Text style={styles.back}>Back</Text> */}
              </View>
 
              <View style={styles.view4}>
-             <Text style={styles.contact1}>Contact Us</Text>
+             <Text style={{fontSize:props.fontSize, marginLeft:0,
+                        marginTop:30,color:"#696969",fontFamily:"OpenSansSemiBold",
+                        marginBottom:20}}>Contact Us</Text>
 
              <View style={{flexDirection:'row'}}>
-             <Text style={styles.text1}>Email</Text>
-             <Text style={styles.text1}>:</Text>
-             <Text style={styles.text1}>foodappadmin@gmail.com</Text>
+             <Text style={{marginLeft:15,
+        marginBottom:5,
+        fontFamily:"OpenSansRegular",
+        color:"#696969",fontSize:props.fontSize1}}>Email</Text>
+
+             <Text style={{marginLeft:15,
+        marginBottom:5,
+        fontFamily:"OpenSansRegular",
+        color:"#696969",fontSize:props.fontSize1}}>:</Text>
+             <Text style={{fontSize:props.fontSize1,marginLeft:15,
+                        marginBottom:5,fontFamily:"OpenSansRegular",
+                        color:"#696969",}}>foodappadmin@gmail.com</Text>
              </View>
 
              <View style={{flexDirection:'row'}}>
-                 <Text style={styles.text1}>Phone</Text>
+                 <Text style={{fontSize:props.fontSize1,marginLeft:15,marginBottom:5,
+                    fontFamily:"OpenSansRegular",color:"#696969",}}>Phone</Text>
+
                  <Text style={{ marginLeft:9,
-                                marginBottom:5,
+                                marginBottom:5,fontSize:props.fontSize1,
                                 fontFamily:"OpenSansRegular",
                                 color:"#696969",}}>:</Text>
-                 <Text style={styles.text1}>+91 9876543210</Text>
+
+                 <Text style={{fontSize:props.fontSize1,marginLeft:15,marginBottom:5,
+                            fontFamily:"OpenSansRegular",
+                                color:"#696969",}}>+91 9876543210</Text>
              </View>
              </View>
         </View>
@@ -40,15 +59,21 @@ const contact = ({navigation}) =>{
 }
 
 
-export default contact;
+const mapStateToProps = (state) =>{
+    const {fontSize,fontSize1} = state;
+    return {fontSize,fontSize1};
+};
+
+
+export default connect(mapStateToProps)(contact);
 
 const styles = StyleSheet.create({
     contact:{
         marginLeft:95,
-        marginTop:50,
+        marginTop:35,
         color:"#696969",
         fontFamily:"OpenSansSemiBold",
-        fontSize:20
+        fontSize:30
     },
     back:{
         fontSize:15,
@@ -80,7 +105,7 @@ const styles = StyleSheet.create({
         marginTop:30,
         color:"#696969",
         fontFamily:"OpenSansSemiBold",
-        fontSize:24,
+      
         marginBottom:20
     },
     text1:{

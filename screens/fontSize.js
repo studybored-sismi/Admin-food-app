@@ -1,77 +1,45 @@
-import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput,ImageBackground,Image} from 'react-native';
+import React, { Component } from "react";
+import {
+    View,
+    StyleSheet,Button,TouchableOpacity,Pressable
+} from "react-native";
+import Text from '../components/CustomText'
+import { connect } from 'react-redux';
+import Icons from 'react-native-vector-icons/Ionicons'
+//import { StyleSheet, Text, View ,TouchableOpacity} from 'react-native';
+import {RadioButton} from 'react-native-paper'
+import { DecreaseFontSize, IncreaseFontSize,MediumFontSize,SmallFontSize,Small2FontSize,Medium2FontSize,Large2FontSize,
+    LargeFontSize,Medium1FontSize} from "../reduxConfig/action";
 
+class fontSize extends Component {
+  
+   
+   // const [checked, setChecked] = useState('first');
+    render() {
+        return (
+            <View style={styles.view4}>
+                <TouchableOpacity onPress={()=>this.props.SmallFontSize()}>
+              <Text>Small</Text></TouchableOpacity>
 
-import {RadioButton} from 'react-native-paper';
+              <TouchableOpacity onPress={()=>this.props.MediumFontSize()}>
+              <Text>Medium</Text></TouchableOpacity>
 
-
-const fontSize = ({navigation}) =>{
-    const [checked, setChecked] = useState('first');
-
-    return(
-        <View style={styles.view4}>
-            <Text style={styles.font}>Font Size</Text>
-<View style={{flexDirection:'row'}}>
-            <RadioButton
-        value="first"
-        status={ checked === 'first' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('first')}
-        color="#696969"
-        
-      />
-      <Text 
-      style={{marginLeft:10,marginTop:10,fontFamily:"OpenSansRegular",
-      color:"#696969",marginRight:10}}>Small</Text>
-
-</View>
-
-<View style={{flexDirection:'row'}}>
-            <RadioButton
-        value="second"
-        status={ checked === 'second' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('second')}
-        color="#696969"
-        
-      />
-      <Text 
-      style={{marginLeft:10,marginTop:10,fontFamily:"OpenSansRegular",
-      color:"#696969",marginRight:10}}>Medium</Text>
-
-</View>
-
-<View style={{flexDirection:'row'}}>
-            <RadioButton
-        value="third"
-        status={ checked === 'third' ? 'checked' : 'unchecked' }
-        onPress={() => setChecked('third')}
-        color="#696969"
-        
-      />
-      <Text 
-      style={{marginLeft:10,marginTop:10,fontFamily:"OpenSansRegular",
-      color:"#696969",marginRight:10}}>Large</Text>
-
-</View>
-            <View style={{flexDirection:'row'}}>
-                <Text style={{fontFamily:"OpenSansBold",color:"#FDC913",marginTop:25,
-            marginLeft:65}}>Cancel</Text>
-                <Text style={{fontFamily:"OpenSansBold",color:"#FDC913",marginTop:25,
-            marginLeft:45}}>OK</Text>
-            </View>
-
-
-        </View>
-    )
-
-
-
-
+              <TouchableOpacity onPress={()=>this.props.LargeFontSize()}>
+              <Text>Large</Text></TouchableOpacity>
+              
+               
+              </View>
+        )
+    }
 }
-
-
-export default fontSize;
-
-
+const mapDispatchToProps= (dispatch) =>{
+    return {
+        LargeFontSize: () => dispatch ( { type : 'LARGE_FONT_SIZE'}),
+        MediumFontSize: () => dispatch({type:'MEDIUM_FONT_SIZE'}),
+        SmallFontSize: () => dispatch({type: 'SMALL_FONT_SIZE'})
+    }
+}
+export default  connect(null,mapDispatchToProps)(fontSize);
 const styles = StyleSheet.create({
    
     view4:{
